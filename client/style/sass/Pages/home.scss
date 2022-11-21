@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url("../src/font/Oswald.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  &::selection {
+    background-color: red;
+    color: #fff;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+body {
+  background: url("../src/images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  
+  font-family: 'Oswald';
+}
+
+.container-website {
+  max-width: 1200px;
+  margin: auto;
+
+  header {
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+      color: white;
+
+      .navigation {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        padding: 10px 40px;
+        border: 1px solid black;
+        border-radius: 50px;
+        background-color: rgba(0,0,0,0.3);
+        font-size: 18px;
+
+        a {
+          cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            color: red;
+          }
+        }
+
+        .steam-account {
+          a {
+            display: flex;
+            align-items: center;
+          }
+
+          b {
+            margin-left: 10px;
+          }
+
+          img {
+            width: 40px;
+            border-radius: 5px;
+          }
+
+          .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+
+          .dropdown-content {
+            position: absolute;
+            background-color: rgba(0,0,0,0.3);
+            min-width: 200px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            display: none;
+            padding: 10px;
+
+            a {
+              border-top: 1px solid black;
+            }
+
+            span {
+              margin-bottom: 10px;
+            }
+          }
+
+          .dropdown:hover .dropdown-content {
+            display: flex;
+          }
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  main {
+    margin-top: 100px;
+
+    .info-container {
+      height: 225px;
+      display: flex;
+      justify-content: space-between;
+
+      .info-nolife {
+        background-color: rgba(0,0,0,0.6);
+        backdrop-filter: blur(15px);
+        height: 250px;
+        width: 30%;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        animation: loadhome 2s;
+
+        img {
+          width: 80px;
+          margin-top: 15px;
+        }
+
+        ul {
+          margin-top: 15px;
+        }
+      }
+
+      .vip-avantage {
+        img {
+          width: 65px;
+        }
+      }
+    }
+
+    .general-container {
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(15px);
+      height: 500px;
+      margin-top: 80px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      animation: loadhome 2s;
+
+      .left-container {
+        height: 430px;
+        width: 550px;
+        padding: 10px;
+
+        .header-leftside {
+          margin-bottom: 50px;
+          h2 {
+            color: red;
+            font-size: 35px;
+  
+            span {
+              color: #fff;
+            }
+          }
+
+          p {
+            color: #fff;
+            font-size: 16px;
+          }
+        }
+
+        p {
+          font-size: 20px;
+          color: #fff;
+        }
+
+        .joinus {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 100px;
+
+          button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: #fff;
+            background-color: red;
+            border: 1px solid #000;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+
+            &:hover {
+              color: red;
+              background-color: #fff;
+            }
+          }
+        }
+      }
+      
+      .right-container {
+        height: 450px;
+        width: 570px;
+
+        video {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  height: 200px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+
+  .footer-partner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    
+    img {
+      width: 200px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
