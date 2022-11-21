@@ -65,7 +65,7 @@ body {
   margin-left: 10px;
 }
 .container-website header nav .navigation .steam-account img {
-  width: 40px;
+  width: 110px;
   border-radius: 5px;
 }
 .container-website header nav .navigation .steam-account .dropdown {
@@ -87,7 +87,6 @@ body {
 }
 .container-website header nav .navigation .steam-account .dropdown-content span {
   margin-bottom: 10px;
-  cursor: pointer;
 }
 .container-website header nav .navigation .steam-account .dropdown:hover .dropdown-content {
   display: flex;
