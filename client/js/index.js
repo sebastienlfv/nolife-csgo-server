@@ -1,19 +1,4 @@
 // get server info
-const options = {
-  method: 'GET',
-  url: 'https://gameserverquery.p.rapidapi.com/serverquery',
-  params: {host: '149.202.87.104:27015', type: 'csgo'},
-  headers: {
-    'X-RapidAPI-Key': '1dc331c34cmshe64e4aeddbadd02p1428b1jsnfb40d0a5ee73',
-    'X-RapidAPI-Host': 'gameserverquery.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
 
 
 
