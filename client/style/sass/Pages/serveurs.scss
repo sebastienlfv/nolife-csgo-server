@@ -45,6 +45,10 @@
     }
   }
 
+  .list-server::-webkit-scrollbar {
+    width: 0px;
+  }
+
   .list-server {
     overflow-y: scroll;
     .servers {
@@ -57,13 +61,21 @@
       transition: 0.2s;
       margin-bottom: 15px;
 
+      h2 {
+        width: 85px;
+      }
+
+      p {
+        width: 70px;
+      }
+
       &:hover {
         background-color: rgba(#E40000,.47);
       }
 
       .server-title {
         font-size: 16px;
-        width: 70px;
+        width: 85px;
       }
 
       .server-manyPlayer {

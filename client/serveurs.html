@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js" defer></script>
   <title>NOLIFE - SERVEURS</title>
 </head>
@@ -24,7 +24,7 @@
     </header>
     <main>
       <div class="general-server">
-        <h1 class="player-online">Joueurs en ligne: 127/1500</h1>
+        <h1 class="player-online"></h1>
         <div class="list-mod-servers">
           <span class="btn-filter active" onclick="filterSelection('all')">Voir tout</span>
           <span class="btn-filter" onclick="filterSelection('ffa')">FFA DM</span>
@@ -38,95 +38,25 @@
           <span class="btn-filter" onclick="filterSelection('jailbreak')">JAILBREAK</span>
         </div>
         <div class="list-server">
+          <div class="servers retake">
+            <h2 class="server-title">RETAKE #1</h2>
+            <p class="server-manyPlayer-retake1"></p>
+            <p class="server-map-retake1"></p>
+            <p class="server-ip-retake1">retake1.nolife.fr</p>
+            <button>CONNECT</button>
+          </div>
           <div class="servers ffa">
             <h2 class="server-title">FFA DM #1</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
+            <p class="server-manyPlayer-ffa1"></p>
+            <p class="server-map-ffa1"></p>
+            <p class="server-ip">dm1.nolife.fr</p>
             <button>CONNECT</button>
           </div>
           <div class="servers ffa">
             <h2 class="server-title">FFA DM #2</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers ffa">
-            <h2 class="server-title">FFA DM #3</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers hs">
-            <h2 class="server-title">HS DM #1</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers hs">
-            <h2 class="server-title">HS DM #2</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers hs">
-            <h2 class="server-title">HS DM #3</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers surf">
-            <h2 class="server-title">SURF #1</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers surf">
-            <h2 class="server-title">SURF #2</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers retake">
-            <h2 class="server-title">RETAKE #1</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers retake">
-            <h2 class="server-title">RETAKE #2</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers retake">
-            <h2 class="server-title">RETAKE #3</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers execute">
-            <h2 class="server-title">EXECUTE #1</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
-            <button>CONNECT</button>
-          </div>
-          <div class="servers execute">
-            <h2 class="server-title">EXECUTE #2</h2>
-            <p class="server-manyPlayer">5/18</p>
-            <p class="server-map">de_mirage</p>
-            <p class="server-ip">dm3.nolife.fr</p>
+            <p class="server-manyPlayer-ffa2"></p>
+            <p class="server-map-ffa2"></p>
+            <p class="server-ip">dm2.nolife.fr</p>
             <button>CONNECT</button>
           </div>
         </div>

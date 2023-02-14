@@ -2,8 +2,15 @@ const express = require('express')
 const router = express.Router()
 const serveurCtrl = require('../controllers/serveurs')
 
-// Route serveur
-router.get('/retake1', serveurCtrl.getRetake1)
+// Route retake1 serveur
+router.get('/InfoRetake1', serveurCtrl.getInfoRetake1)
+router.get('/PlayerRetake1', serveurCtrl.getPlayerRetake1)
+
+router.get('/InfoFfa1', serveurCtrl.getInfoFfa1)
+router.get('/PlayerFfa1', serveurCtrl.getPlayerFfa1)
+
+router.get('/InfoFfa2', serveurCtrl.getInfoFfa2)
+router.get('/PlayerFfa2', serveurCtrl.getPlayerFfa2)
 
 
 
