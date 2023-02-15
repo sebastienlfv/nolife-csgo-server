@@ -113,6 +113,10 @@ body {
 .container-website main .info-container .info-nolife ul {
   margin-top: 15px;
 }
+.container-website main .info-container .fa-solid.fa-users {
+  font-size: 40px;
+  margin-top: 25px;
+}
 .container-website main .info-container .vip-avantage img {
   width: 65px;
 }
