@@ -26,25 +26,26 @@
       <nav>
         <a href="./index.html"><img src="./client/src/images/logo-Nolife.webp" alt="nolife"></a>
         <div class="navigation">
-          <a href="#"><div>VIP</div></a>
-            <a href="./client/serveurs.html"><div>Nos serveurs</div></a>
-            <a href="#"><div>Contact</div></a>
-            <div class="steam-account">
-              <? if(isset($_SESSION['steamid'])) {?>
-                <div class="dropdown">
-                  <a href="#" style='display: flex; align-items: center;'><img style='width: 40px; border-radius: 5px' src="<?=$steamprofile['avatar'];?>"><b style='margin-left: 10px;'><?=$steamprofile['personaname']?></b></a>
-                  <div class="dropdown-content">
-                    <span>Option1</span>
-                    <span>Option2</span>
-                    <span>Option3</span>
-                    <a href='logout.php'>Logout</a>
-                  </div>
+          <a href="./">Accueil</a>
+          <!-- <a href="#">VIP</a> -->
+          <a href="./client/serveurs.html">Nos serveurs</a>
+          <a href="./client/contact.html">Contact</a>
+          <!-- <div class="steam-account">
+            <? if(isset($_SESSION['steamid'])) {?>
+              <div class="dropdown">
+                <a href="#" style='display: flex; align-items: center;'><img style='width: 40px; border-radius: 5px' src="<?=$steamprofile['avatar'];?>"><b style='margin-left: 10px;'><?=$steamprofile['personaname']?></b></a>
+                <div class="dropdown-content">
+                  <span>Option1</span>
+                  <span>Option2</span>
+                  <span>Option3</span>
+                  <a href='logout.php'>Logout</a>
                 </div>
-              <? } else { ?>
-                <? echo loginbutton(); ?>
-              <? } ?>
-            </div>
-        </div>
+              </div>
+            <? } else { ?>
+              <? echo loginbutton(); ?>
+            <? } ?>
+          </div> -->
+      </div>
       </nav>
     </header>
     <main>
