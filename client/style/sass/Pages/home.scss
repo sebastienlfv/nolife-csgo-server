@@ -203,13 +203,14 @@ body {
       border-radius: 10px;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       animation: loadhome 2s;
 
       .left-container {
-        height: 430px;
-        width: 550px;
-        padding: 10px;
+        // height: 430px;
+        // width: 550px;
+        // padding: 10px;
+        padding: 20px;
 
         .header-leftside {
           margin-bottom: 50px;
@@ -231,6 +232,10 @@ body {
         p {
           font-size: 20px;
           color: #fff;
+
+          span {
+            color: red;
+          }
         }
 
         .joinus {

@@ -1,63 +1,52 @@
-// récupérer les info serveurs
-async function manyPlayersNolife() {
-  const url = 'http://localhost:4050'
-  const getInfoRetake1 = '/api/serveur/InfoRetake1'
-  const getInfoFfa1 = '/api/serveur/InfoFfa1'
-  const getInfoFfa2 = '/api/serveur/InfoFfa2'
+// Info server
+
+async function getServerInfo() {
+  const url = 'http://localhost:4050';
+  const servers = [
+    {
+      info: '/api/serveur/InfoRetake1',
+      player: '/api/serveur/PlayerRetake1',
+      manyPlayer: '.server-manyPlayer-retake1',
+      map: '.server-map-retake1',
+    },
+    {
+      info: '/api/serveur/InfoFfa1',
+      player: '/api/serveur/PlayerFfa1',
+      manyPlayer: '.server-manyPlayer-ffa1',
+      map: '.server-map-ffa1'
+    },
+    {
+      info: '/api/serveur/InfoFfa2',
+      player: '/api/serveur/PlayerFfa2',
+      manyPlayer: '.server-manyPlayer-ffa2',
+      map: '.server-map-ffa2'
+    }
+  ];
 
   const [retake1, ffa1, ffa2] = await Promise.all([
-    axios.get(url + getInfoRetake1),
-    axios.get(url + getInfoFfa1),
-    axios.get(url + getInfoFfa2)
+    axios.get(url + servers[0].info),
+    axios.get(url + servers[1].info),
+    axios.get(url + servers[2].info)
   ])
 
-  console.log([retake1, ffa1, ffa2]);
+  const TotalPlayers = retake1.data.players + ffa1.data.players + ffa2.data.players;
+  const maxPlayers = retake1.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers;
+  const generalPlayers = document.querySelector('.player-online');
+  generalPlayers.innerHTML = 'Joueurs en ligne: ' + TotalPlayers + '/' + maxPlayers;
 
-  const generalPlayers = document.querySelector('.player-online')
-  const TotalPlayers = retake1.data.players + ffa1.data.players + ffa2.data.players
-  const maxPlayers = retake1.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers
-
-  generalPlayers.innerHTML = 'Joueurs en ligne: ' + TotalPlayers + '/' + maxPlayers
+  servers.forEach((server, index) => {
+    axios.get(url + server.info)
+      .then((response) => {
+        console.log('api info', response.data);
+        const manyPlayer = document.querySelector(server.manyPlayer);
+        const map = document.querySelector(server.map);
+        manyPlayer.innerHTML = response.data.players + '/' + response.data.maxPlayers;
+        map.innerHTML = response.data.map;
+      });
+  });
 }
 
-manyPlayersNolife()
-
-
-// get server info
-const url = 'http://localhost:4050';
-
-const servers = [
-  {
-    info: '/api/serveur/InfoRetake1',
-    player: '/api/serveur/PlayerRetake1',
-    manyPlayer: '.server-manyPlayer-retake1',
-    map: '.server-map-retake1',
-  },
-  {
-    info: '/api/serveur/InfoFfa1',
-    player: '/api/serveur/PlayerFfa1',
-    manyPlayer: '.server-manyPlayer-ffa1',
-    map: '.server-map-ffa1'
-  },
-  {
-    info: '/api/serveur/InfoFfa2',
-    player: '/api/serveur/PlayerFfa2',
-    manyPlayer: '.server-manyPlayer-ffa2',
-    map: '.server-map-ffa2'
-  }
-];
-
-servers.forEach((server) => {
-  axios.get(url + server.info)
-    .then((response) => {
-      console.log('api info', response.data);
-      const manyPlayer = document.querySelector(server.manyPlayer);
-      const map = document.querySelector(server.map);
-
-      manyPlayer.innerHTML = response.data.players + '/' + response.data.maxPlayers;
-      map.innerHTML = response.data.map;
-    });
-});
+getServerInfo();
 
 
 

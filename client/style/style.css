@@ -165,13 +165,11 @@ body {
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   animation: loadhome 2s;
 }
 .container-website main .general-container .left-container {
-  height: 430px;
-  width: 550px;
-  padding: 10px;
+  padding: 20px;
 }
 .container-website main .general-container .left-container .header-leftside {
   margin-bottom: 50px;
@@ -190,6 +188,9 @@ body {
 .container-website main .general-container .left-container p {
   font-size: 20px;
   color: #fff;
+}
+.container-website main .general-container .left-container p span {
+  color: red;
 }
 .container-website main .general-container .left-container .joinus {
   width: 100%;
@@ -331,6 +332,17 @@ footer .footer-partner img:hover {
   cursor: pointer;
   color: #fff;
   font-weight: bold;
+}
+
+.container-formulaire h1 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+.container-formulaire div {
+  width: 250px;
+  background-color: red;
+  height: 3px;
+  border-radius: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */
