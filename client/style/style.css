@@ -7,7 +7,7 @@
   margin: 0;
 }
 *::selection {
-  background-color: red;
+  background-color: gray;
   color: #fff;
 }
 * a {
@@ -19,6 +19,10 @@ body {
   background: url("../src/images/background.jpg") no-repeat center center fixed;
   background-size: cover;
   font-family: "Oswald";
+}
+
+.activ {
+  color: red;
 }
 
 .container-website {
@@ -106,6 +110,39 @@ body {
   color: white;
   animation: loadhome 2s;
 }
+.container-website main .info-container .info-nolife .container-reseaux {
+  margin-top: 30px;
+  width: 100%;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw:nth-child(2) {
+  width: 55%;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: auto;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw a:hover {
+  color: red;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw a p {
+  margin-top: 5px;
+}
+.container-website main .info-container .info-nolife .container-reseaux .raw:nth-child(2) {
+  margin-top: 30px;
+}
+.container-website main .info-container .info-nolife .container-reseaux i {
+  font-size: 30px;
+}
 .container-website main .info-container .info-nolife img {
   width: 80px;
   margin-top: 15px;
@@ -113,9 +150,9 @@ body {
 .container-website main .info-container .info-nolife ul {
   margin-top: 15px;
 }
-.container-website main .info-container .fa-solid.fa-users {
-  font-size: 40px;
-  margin-top: 25px;
+.container-website main .info-container .fa-solid.fa-users, .container-website main .info-container .title-reseau {
+  font-size: 25px;
+  margin-top: 20px;
 }
 .container-website main .info-container .vip-avantage img {
   width: 65px;

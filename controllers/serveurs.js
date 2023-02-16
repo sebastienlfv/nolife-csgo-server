@@ -12,9 +12,8 @@ function bigIntToString(obj) {
   return obj
 }
 
-module.exports.getInfoRetake1 = async (req, res) => {
+const getServerInfo = async (req, res, ip) => {
   try {
-    const ip = '149.202.87.104:27040'
     const infoResponse = await queryGameServerInfo(ip)
     const infoResponseStr = bigIntToString(infoResponse)
     res.json(infoResponseStr)
@@ -24,9 +23,8 @@ module.exports.getInfoRetake1 = async (req, res) => {
   }
 }
 
-module.exports. getPlayerRetake1 = async (req, res) => {
+const getPlayerInfo = async (req, res, ip) => {
   try {
-    const ip = '149.202.87.104:27040'
     const playerResponse = await queryGameServerPlayer(ip)
     const playerResponseStr = bigIntToString(playerResponse)
     res.json(playerResponseStr)
@@ -34,52 +32,34 @@ module.exports. getPlayerRetake1 = async (req, res) => {
     console.error(err)
     res.status(500).json({ err: 'Une erreur s\'est produite' })
   }
+}
+
+module.exports.getInfoRetake1 = async (req, res) => {
+  const ip = '149.202.87.104:27040'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerRetake1 = async (req, res) => {
+  const ip = '149.202.87.104:27040'
+  await getPlayerInfo(req, res, ip)
 }
 
 module.exports.getInfoFfa1 = async (req, res) => {
-  try {
-    const ip = '149.202.87.104:27015'
-    const infoResponse = await queryGameServerInfo(ip)
-    const infoResponseStr = bigIntToString(infoResponse)
-    res.json(infoResponseStr)
-  } catch (error) {
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
-  }
+  const ip = '149.202.87.104:27015'
+  await getServerInfo(req, res, ip)
 }
 
-module.exports. getPlayerFfa1 = async (req, res) => {
-  try {
-    const ip = '149.202.87.104:27015'
-    const playerResponse = await queryGameServerPlayer(ip)
-    const playerResponseStr = bigIntToString(playerResponse)
-    res.json(playerResponseStr)
-  } catch (err){
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
-  }
+module.exports.getPlayerFfa1 = async (req, res) => {
+  const ip = '149.202.87.104:27015'
+  await getPlayerInfo(req, res, ip)
 }
 
 module.exports.getInfoFfa2 = async (req, res) => {
-  try {
-    const ip = '149.202.87.104:27018'
-    const infoResponse = await queryGameServerInfo(ip)
-    const infoResponseStr = bigIntToString(infoResponse)
-    res.json(infoResponseStr)
-  } catch (error) {
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
-  }
+  const ip = '149.202.87.104:27018'
+  await getServerInfo(req, res, ip)
 }
 
-module.exports. getPlayerFfa2 = async (req, res) => {
-  try {
-    const ip = '149.202.87.104:27018'
-    const playerResponse = await queryGameServerPlayer(ip)
-    const playerResponseStr = bigIntToString(playerResponse)
-    res.json(playerResponseStr)
-  } catch (err){
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
-  }
+module.exports.getPlayerFfa2 = async (req, res) => {
+  const ip = '149.202.87.104:27018'
+  await getPlayerInfo(req, res, ip)
 }
