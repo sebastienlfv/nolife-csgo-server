@@ -6,6 +6,9 @@ const serveurCtrl = require('../controllers/serveurs')
 router.get('/InfoRetake1', serveurCtrl.getInfoRetake1)
 router.get('/PlayerRetake1', serveurCtrl.getPlayerRetake1)
 
+router.get('/InfoRetake2', serveurCtrl.getInfoRetake2)
+router.get('/PlayerRetake2', serveurCtrl.getPlayerRetake2)
+
 router.get('/InfoFfa1', serveurCtrl.getInfoFfa1)
 router.get('/PlayerFfa1', serveurCtrl.getPlayerFfa1)
 

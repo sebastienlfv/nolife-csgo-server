@@ -10,6 +10,12 @@ async function getServerInfo() {
       map: '.server-map-retake1',
     },
     {
+      info: '/api/serveur/InfoRetake2',
+      player: '/api/serveur/PlayerRetake2',
+      manyPlayer: '.server-manyPlayer-retake2',
+      map: '.server-map-retake2',
+    },
+    {
       info: '/api/serveur/InfoFfa1',
       player: '/api/serveur/PlayerFfa1',
       manyPlayer: '.server-manyPlayer-ffa1',
@@ -26,7 +32,8 @@ async function getServerInfo() {
   const [retake1, ffa1, ffa2] = await Promise.all([
     axios.get(url + servers[0].info),
     axios.get(url + servers[1].info),
-    axios.get(url + servers[2].info)
+    axios.get(url + servers[2].info),
+    axios.get(url + servers[3].info)
   ])
 
   const TotalPlayers = retake1.data.players + ffa1.data.players + ffa2.data.players;

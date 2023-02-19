@@ -34,6 +34,9 @@ const getPlayerInfo = async (req, res, ip) => {
   }
 }
 
+
+// RETAKE
+
 module.exports.getInfoRetake1 = async (req, res) => {
   const ip = '149.202.87.104:27040'
   await getServerInfo(req, res, ip)
@@ -43,6 +46,20 @@ module.exports.getPlayerRetake1 = async (req, res) => {
   const ip = '149.202.87.104:27040'
   await getPlayerInfo(req, res, ip)
 }
+
+module.exports.getInfoRetake2 = async (req, res) => {
+  const ip = '149.202.87.104:27043'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerRetake2 = async (req, res) => {
+  const ip = '149.202.87.104:27043'
+  await getPlayerInfo(req, res, ip)
+}
+
+
+
+// FFA
 
 module.exports.getInfoFfa1 = async (req, res) => {
   const ip = '149.202.87.104:27015'
