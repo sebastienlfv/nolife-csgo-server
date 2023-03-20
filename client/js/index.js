@@ -16,6 +16,24 @@ async function getServerInfo() {
       map: '.server-map-retake2',
     },
     {
+      info: '/api/serveur/InfoRetake3',
+      player: '/api/serveur/PlayerRetake3',
+      manyPlayer: '.server-manyPlayer-retake3',
+      map: '.server-map-retake3',
+    },
+    {
+      info: '/api/serveur/InfoRetake4',
+      player: '/api/serveur/PlayerRetake4',
+      manyPlayer: '.server-manyPlayer-retake4',
+      map: '.server-map-retake4',
+    },
+    {
+      info: '/api/serveur/InfoRetake5',
+      player: '/api/serveur/PlayerRetake5',
+      manyPlayer: '.server-manyPlayer-retake5',
+      map: '.server-map-retake5',
+    },
+    {
       info: '/api/serveur/InfoFfa1',
       player: '/api/serveur/PlayerFfa1',
       manyPlayer: '.server-manyPlayer-ffa1',
@@ -26,7 +44,7 @@ async function getServerInfo() {
       player: '/api/serveur/PlayerFfa2',
       manyPlayer: '.server-manyPlayer-ffa2',
       map: '.server-map-ffa2'
-    }
+    },
   ];
 
   const [retake1, ffa1, ffa2] = await Promise.all([
@@ -99,3 +117,4 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+

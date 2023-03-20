@@ -57,6 +57,37 @@ module.exports.getPlayerRetake2 = async (req, res) => {
   await getPlayerInfo(req, res, ip)
 }
 
+module.exports.getInfoRetake3 = async (req, res) => {
+  const ip = '149.202.87.104:27046'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerRetake3 = async (req, res) => {
+  const ip = '149.202.87.104:27046'
+  await getPlayerInfo(req, res, ip)
+}
+
+module.exports.getInfoRetake4 = async (req, res) => {
+  const ip = '149.202.87.104:27049'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerRetake4 = async (req, res) => {
+  const ip = '149.202.87.104:27049'
+  await getPlayerInfo(req, res, ip)
+}
+
+module.exports.getInfoRetake5 = async (req, res) => {
+  const ip = '149.202.87.104:27052'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerRetake5 = async (req, res) => {
+  const ip = '149.202.87.104:27052'
+  await getPlayerInfo(req, res, ip)
+}
+
+
 
 
 // FFA
