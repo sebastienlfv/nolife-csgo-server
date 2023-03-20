@@ -45,17 +45,41 @@ async function getServerInfo() {
       manyPlayer: '.server-manyPlayer-ffa2',
       map: '.server-map-ffa2'
     },
+    {
+      info: '/api/serveur/InfoFfa3',
+      player: '/api/serveur/PlayerFfa3',
+      manyPlayer: '.server-manyPlayer-ffa3',
+      map: '.server-map-ffa3'
+    },
+    {
+      info: '/api/serveur/InfoHsMod1',
+      player: '/api/serveur/PlayerHsMod1',
+      manyPlayer: '.server-manyPlayer-hsmod1',
+      map: '.server-map-hsmod1'
+    },
+    {
+      info: '/api/serveur/InfoHsMod2',
+      player: '/api/serveur/PlayerHsMod2',
+      manyPlayer: '.server-manyPlayer-hsmod2',
+      map: '.server-map-hsmod2'
+    },
   ];
 
-  const [retake1, ffa1, ffa2] = await Promise.all([
+  const [retake1, retake2, retake3, retake4, retake5, ffa1, ffa2, ffa3, hsmod1, hsmod2] = await Promise.all([
     axios.get(url + servers[0].info),
     axios.get(url + servers[1].info),
     axios.get(url + servers[2].info),
-    axios.get(url + servers[3].info)
+    axios.get(url + servers[3].info),
+    axios.get(url + servers[4].info),
+    axios.get(url + servers[5].info),
+    axios.get(url + servers[6].info),
+    axios.get(url + servers[7].info),
+    axios.get(url + servers[8].info),
+    axios.get(url + servers[9].info)
   ])
 
-  const TotalPlayers = retake1.data.players + ffa1.data.players + ffa2.data.players;
-  const maxPlayers = retake1.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers;
+  const TotalPlayers = retake1.data.players + retake2.data.players + retake3.data.players + retake4.data.players + retake5.data.players + ffa1.data.players + ffa2.data.players + ffa3.data.players + hsmod1.data.players + hsmod2.data.players;
+  const maxPlayers = retake1.data.maxPlayers + retake2.data.maxPlayers + retake3.data.maxPlayers + retake4.data.maxPlayers + retake5.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers + ffa3.data.maxPlayers + hsmod1.data.maxPlayers + hsmod2.data.maxPlayers;
   const generalPlayers = document.querySelector('.player-online');
   generalPlayers.innerHTML = 'Joueurs en ligne: ' + TotalPlayers + '/' + maxPlayers;
 

@@ -111,3 +111,35 @@ module.exports.getPlayerFfa2 = async (req, res) => {
   const ip = '149.202.87.104:27018'
   await getPlayerInfo(req, res, ip)
 }
+
+module.exports.getInfoFfa3 = async (req, res) => {
+  const ip = '149.202.87.104:27021'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerFfa3 = async (req, res) => {
+  const ip = '149.202.87.104:27021'
+  await getPlayerInfo(req, res, ip)
+}
+
+// HSMOD
+
+module.exports.getInfoHsMod1 = async (req, res) => {
+  const ip = '149.202.87.104:27100'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerHsMod1 = async (req, res) => {
+  const ip = '149.202.87.104:27100'
+  await getPlayerInfo(req, res, ip)
+}
+
+module.exports.getInfoHsMod2 = async (req, res) => {
+  const ip = '149.202.87.104:27103'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerHsMod2 = async (req, res) => {
+  const ip = '149.202.87.104:27103'
+  await getPlayerInfo(req, res, ip)
+}
