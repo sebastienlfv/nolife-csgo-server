@@ -1,7 +1,7 @@
 // Info server
 
 async function getServerInfo() {
-  const url = 'http://localhost:4050';
+  const url = 'http://149.202.87.104:4050';
   const servers = [
     {
       info: '/api/serveur/InfoRetake1',
