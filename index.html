@@ -32,22 +32,11 @@
           <!-- <a href="#">VIP</a> -->
           <a href="./client/serveurs.html">Nos serveurs</a>
           <!-- <a href="./client/contact.html">Contact</a> -->
-          <!-- <div class="steam-account">
-            <? if(isset($_SESSION['steamid'])) {?>
-              <div class="dropdown">
-                <a href="#" style='display: flex; align-items: center;'><img style='width: 40px; border-radius: 5px' src="<?=$steamprofile['avatar'];?>"><b style='margin-left: 10px;'><?=$steamprofile['personaname']?></b></a>
-                <div class="dropdown-content">
-                  <span>Option1</span>
-                  <span>Option2</span>
-                  <span>Option3</span>
-                  <a href='logout.php'>Logout</a>
-                </div>
-              </div>
-            <? } else { ?>
-              <? echo loginbutton(); ?>
-            <? } ?>
-          </div> -->
       </div>
+      <a href="http://localhost:4050/api/auth/steam" class="button-steam">
+        <i class="fa-brands fa-steam text-2xl"></i>
+        <span>Login with Steam</span>
+      </a>
       </nav>
     </header>
     <main>
