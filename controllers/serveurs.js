@@ -1,5 +1,6 @@
 const { queryGameServerInfo, queryGameServerPlayer } = require('steam-server-query')
 
+
 // convert BigInt to string recursively in an object
 function bigIntToString(obj) {
   for (const key in obj) {

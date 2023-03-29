@@ -343,4 +343,43 @@ footer .footer-partner img:hover {
   border-radius: 50px;
 }
 
+@media screen and (max-width: 900px) {
+  nav {
+    flex-direction: column;
+  }
+  nav img {
+    margin-bottom: 20px;
+  }
+  .info-container {
+    height: auto !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .info-container .info-nolife {
+    width: 85% !important;
+    margin-bottom: 20px;
+  }
+  .general-container {
+    height: auto !important;
+    width: 90%;
+    margin: auto;
+  }
+  footer {
+    height: auto !important;
+  }
+  .footer-partner {
+    flex-direction: column;
+  }
+  .general-server {
+    width: 90%;
+    margin: auto;
+  }
+  .general-server .list-mod-servers {
+    flex-direction: column;
+  }
+  .general-server .servers {
+    justify-content: flex-start !important;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
