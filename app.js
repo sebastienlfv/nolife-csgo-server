@@ -68,9 +68,16 @@ app.use((req, res, next) => {
   });
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5500");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 app.use(session({
   secret: 'uM7tL0pXeK',
-  saveUninitialized: true,
+  saveUninitialized: false,
   resave: false,
   cookie: {
     maxAge: 30000 // Durée de vie de la session en millisecondes (30 secondes)
@@ -83,18 +90,33 @@ app.use(passport.session());
 
 // Routes
 app.get('/', (req, res) => {
+  console.log('GET /');
   res.redirect('/');
 });
+
 app.get('/api/auth/steam', passport.authenticate('steam', {failureRedirect: '/'}), function (req, res) {
-  res.redirect('/')
+  console.log('GET /api/auth/steam');
+  res.redirect('/');
 });
+
 app.get('/api/auth/steam/return', passport.authenticate('steam', {failureRedirect: '/'}), function (req, res) {
+  console.log('GET /api/auth/steam/return');
   // Redirect is found user
   if (req.user) {
-    res.redirect('http://localhost:5500/index.html');
-    console.log('info', req.user);
+    console.log('User authenticated:', req.user);
+    res.redirect('http://localhost:5500/');
   }
 });
+
+app.get('/api/user', (req, res) => {
+  const user = req.user; // Récupération de l'utilisateur connecté
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(401).json({ message: 'User not authenticated' });
+  }
+});
+
 
 app.get('/api/userinfo', (req, res) => {
   if (req.isAuthenticated()) {
@@ -102,31 +124,41 @@ app.get('/api/userinfo', (req, res) => {
     const { id, displayName, _json } = req.user;
     const avatarfull = _json.avatarfull;
     const userInfo = { steamid: id, personaname: displayName, avatarfull: avatarfull };
+    console.log('User authenticated:', userInfo);
     res.send(userInfo);    
   } else {
     // L'utilisateur n'est pas authentifié
+    console.log('User not authenticated');
     res.sendStatus(401);
   }
 });
 
 // import routes
-const serveurRoutes = require('./routes/serveur')
+const serveurRoutes = require('./routes/serveur');
 
 // cors
-// autoriser les requêtes provenant de http://localhost:5500
-app.use(cors({
-  origin: 'http://localhost:5500'
-}));
+
+// Autoriser les requêtes provenant de http://localhost:5500
+const corsOptions = {
+  origin: 'http://localhost:5500',
+  optionsSuccessStatus: 200,
+  methods: 'GET, POST, PUT, DELETE',
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true // Autoriser l'envoi de cookies
+};
+
+// Activer le middleware CORS
+app.use(cors(corsOptions));
 
 
 // middleware
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.use('/api/serveur', serveurRoutes)
+app.use('/api/serveur', serveurRoutes);
 
 // static files
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
 
 module.exports = app;
