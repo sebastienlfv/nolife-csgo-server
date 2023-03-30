@@ -1,8 +1,19 @@
+// Vérification cookie connexion
+console.log(document.cookie.indexOf("connect.sid") === false);
+
+if (document.cookie.indexOf("connect.sid") === true) {
+  // Le cookie n'existe pas, afficher le bouton Steam
+  document.querySelector(".button-steam").style.display = "flex";
+} else {
+  // Le cookie existe, masquer le bouton Steam
+  document.querySelector(".button-steam").style.display = "none";
+}   
+
 // Récupération des informations utilisateur côté client
 
 axios.get('http://localhost:4050/api/user', { withCredentials: true })
   .then(response => {
-    console.log(response.data);
+    console.log('steam info', response.data); 
   })
   .catch(error => {
     console.error(error);

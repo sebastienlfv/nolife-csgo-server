@@ -54,6 +54,15 @@ setInterval(() => {
   sessionStore.clearExpiredSessions();
 }, 30000);
 
+app.use((req, res, next) => {
+  // Vérifiez si la session existe et qu'elle n'est pas expirée
+  if (req.session && req.session.expires && req.session.expires > new Date()) {
+    // Mettre à jour la propriété expires de la session
+    req.session.expires = new Date(Date.now() + (60 * 60 * 1000)); // Durée de vie de la session en millisecondes (1 heure)
+  }
+  next();
+});
+
 // Middleware pour supprimer les sessions expirées de la base de données
 app.use((req, res, next) => {
   Session.destroy({
@@ -80,7 +89,7 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   cookie: {
-    maxAge: 30000 // Durée de vie de la session en millisecondes (30 secondes)
+    maxAge: 60 * 60 * 1000 // Durée de vie de la session en millisecondes (1 heure)
   },
   store: sessionStore,
 }));
