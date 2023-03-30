@@ -1,23 +1,43 @@
 // Vérification cookie connexion
-console.log(document.cookie.indexOf("connect.sid") === false);
+console.log(document.cookie.indexOf('connect.sid'));
 
-if (document.cookie.indexOf("connect.sid") === true) {
+if (document.cookie.indexOf('connect.sid') === -1) {
   // Le cookie n'existe pas, afficher le bouton Steam
   document.querySelector(".button-steam").style.display = "flex";
+  document.querySelector(".button-steam").style.alignItems = "center";
+  document.querySelector(".button-steam").style.gap = "5px";
 } else {
   // Le cookie existe, masquer le bouton Steam
   document.querySelector(".button-steam").style.display = "none";
-}   
+}
 
-// Récupération des informations utilisateur côté client
-
-axios.get('http://localhost:4050/api/user', { withCredentials: true })
+axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .then(response => {
-    console.log('steam info', response.data); 
+    console.log('connected?', response.data); 
+
+    if(response.data === 'connected') {
+      // Connnected, masquer le bouton Steam
+      document.querySelector(".button-steam").style.display = "none";
+
+      // Récupération des informations utilisateur côté client
+      axios.get('http://localhost:4050/api/user', { withCredentials: true })
+      .then(response => {
+        console.log('steam info', response.data); 
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    } else {
+      // disconnected, masquer le bouton Steam
+      document.querySelector(".button-steam").style.display = "flex";
+      document.querySelector(".button-steam").style.alignItems = "center";
+      document.querySelector(".button-steam").style.gap = "5px";
+    }
   })
   .catch(error => {
     console.error(error);
   });
+
 
 // fetch('http://localhost:4050/api/user', {
 //   credentials: 'include' // Autoriser l'envoi de cookies

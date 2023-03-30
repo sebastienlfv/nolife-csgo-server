@@ -11,6 +11,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { Session, sequelize } = require('./config/db');
 const { Op } = require('sequelize');
+const cookieParser = require('cookie-parser');
 dotenv.config()
 
 // STEAM
@@ -84,6 +85,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(cookieParser());
 app.use(session({
   secret: 'uM7tL0pXeK',
   saveUninitialized: false,
@@ -98,6 +100,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.get('/api/checkSession', (req, res) => {
+  if (req.user) {
+    res.send('connected');
+  } else {
+    res.send('not_connected');
+  }
+});
+
 app.get('/', (req, res) => {
   console.log('GET /');
   res.redirect('/');
