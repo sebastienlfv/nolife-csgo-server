@@ -31,6 +31,20 @@ body {
   border-radius: 5px;
 }
 
+.burger-steam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.burger-steam .steam-avatar {
+  width: 70px;
+  border-radius: 5px;
+}
+.burger-steam .steam-name {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
 .container-website {
   max-width: 1200px;
   margin: auto;

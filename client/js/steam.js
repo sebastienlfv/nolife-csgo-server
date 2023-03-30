@@ -22,12 +22,19 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
       // Récupération des informations utilisateur côté client
       axios.get('http://localhost:4050/api/user', { withCredentials: true })
       .then(response => {
-        console.log('steam info', response.data); 
+        console.log('steam info', response.data);
+        const avatar = response.data.photos[2].value
+        const name = response.data.displayName
+        document.querySelector('.steam-avatar').src = avatar
+        document.querySelector('.steam-name').innerHTML = name
       })
       .catch(error => {
         console.error(error);
       });
     } else {
+      // masquer burger steam
+      document.querySelector('.burger-steam').style.display = "none"
+
       // disconnected, masquer le bouton Steam
       document.querySelector(".button-steam").style.display = "flex";
       document.querySelector(".button-steam").style.alignItems = "center";
@@ -37,6 +44,19 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .catch(error => {
     console.error(error);
   });
+
+// deconnexion
+
+function logoutSteam(e) {
+  e.preventDefault();
+  axios.get('http://localhost:4050/api/logout', { withCredentials: true })
+    .then(response => {
+      console.log(response);
+      window.location.href = '/'
+    })
+}
+
+document.querySelector('.steam-logout').addEventListener('click', logoutSteam);
 
 
 // fetch('http://localhost:4050/api/user', {

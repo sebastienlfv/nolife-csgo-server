@@ -152,6 +152,14 @@ app.get('/api/userinfo', (req, res) => {
   }
 });
 
+app.get('/api/logout', function(req, res){
+  req.session.destroy(function(err) {
+    if (err) { return next(err); }
+    // redirection vers la page d'accueil, par exemple
+    res.send('deconnecté')
+  });
+});
+
 // import routes
 const serveurRoutes = require('./routes/serveur');
 
