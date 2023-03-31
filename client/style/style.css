@@ -31,16 +31,51 @@ body {
   border-radius: 5px;
 }
 
-.burger-steam {
+.steam {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
-.burger-steam .steam-avatar {
-  width: 70px;
+.steam .burger-steam {
+  display: none;
+  flex-direction: column;
+  width: 200px;
+  background-color: #44444b;
+  color: #c0c0c2;
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 70px;
+  right: 0px;
+}
+.steam .burger-steam div:nth-child(4) {
+  color: rgb(216, 81, 81);
+}
+.steam .burger-steam div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+.steam .burger-steam div:hover {
+  background-color: #57575f;
   border-radius: 5px;
 }
-.burger-steam .steam-name {
+.steam .steam-avatar {
+  width: 70px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  border: 2px solid transparent;
+  transition: 0.2s;
+}
+.steam .steam-avatar:hover {
+  border: 2px solid rgb(216, 81, 81);
+}
+.steam .steam-name {
   margin-top: 10px;
   font-size: 18px;
 }

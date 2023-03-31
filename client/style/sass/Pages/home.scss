@@ -35,14 +35,54 @@ body {
   border-radius: 5px;
 }
 
-.burger-steam {
+.steam {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  .burger-steam {
+    display: none;
+    flex-direction: column;
+    width: 200px;
+    background-color: #44444b;
+    color: #c0c0c2;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+
+    div:nth-child(4) {
+      color: rgb(216, 81, 81)
+    }
+    
+    div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 5px;
+
+      &:hover {
+        background-color: #57575f;
+        border-radius: 5px;
+      }
+    }
+  }
 
   .steam-avatar {
     width: 70px;
-    border-radius: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: block;
+    border: 2px solid transparent;
+    transition: 0.2s;
+
+    &:hover {
+      border: 2px solid rgb(216, 81, 81);
+    }
   }
 
   .steam-name {

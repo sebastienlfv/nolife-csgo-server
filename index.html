@@ -1,15 +1,3 @@
-<? 
-
-  require 'steamauth/steamauth.php';
-  require 'steamauth/userInfo.php';
-
-  if(isset($_SESSION['steamid'])) {
-    $id = $_SESSION['steamid'];
-  } else {
-    #Not logged in
-  }
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nolife Clothing propose des serveurs CS:GO dotés de modes de jeu populaires tels que Retake, Deathmatch et HS DM.">
   <link rel="stylesheet" href="./client/style/style.css">
+  <link rel="shortcut icon" href="./client/src/images/32x32.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://kit.fontawesome.com/a143a2c033.js" crossorigin="anonymous"></script>
   <script src="./client/js/steam.js" defer></script>
@@ -38,10 +27,26 @@
         <i class="fa-brands fa-steam text-2xl"></i>
         <span>Login with Steam</span>
       </a>
-      <div class="burger-steam">
+      <div class="steam">
         <img src="" alt="steam-avatar" class="steam-avatar">
-        <p class="steam-name"></p>
-        <button class="steam-logout" style="margin-top: 10px; padding: 5px 20px">Logout</button>
+        <div class="burger-steam">
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <p>Espace personnel</p>  
+          </div>
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <p>Espace personnel</p>  
+          </div>
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <p>Espace personnel</p>  
+          </div>
+          <div id="steam-logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <p>Se déconnecter</p>  
+          </div>
+        </div>
       </div>
       </nav>
     </header>

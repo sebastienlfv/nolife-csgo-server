@@ -1,16 +1,7 @@
-// Vérification cookie connexion
-console.log(document.cookie.indexOf('connect.sid'));
+// item
+const openMenu = document.querySelector('.burger-steam')
 
-if (document.cookie.indexOf('connect.sid') === -1) {
-  // Le cookie n'existe pas, afficher le bouton Steam
-  document.querySelector(".button-steam").style.display = "flex";
-  document.querySelector(".button-steam").style.alignItems = "center";
-  document.querySelector(".button-steam").style.gap = "5px";
-} else {
-  // Le cookie existe, masquer le bouton Steam
-  document.querySelector(".button-steam").style.display = "none";
-}
-
+// vérification connexion
 axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .then(response => {
     console.log('connected?', response.data); 
@@ -24,16 +15,33 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
       .then(response => {
         console.log('steam info', response.data);
         const avatar = response.data.photos[2].value
-        const name = response.data.displayName
-        document.querySelector('.steam-avatar').src = avatar
-        document.querySelector('.steam-name').innerHTML = name
+        const steamAvatar = document.querySelector('.steam-avatar')
+        steamAvatar.src = avatar
+        
+        function toggleOpenMenu() {
+          openMenu.style.display = openMenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        document.addEventListener('click', (event) => {
+          if (!openMenu.contains(event.target) && event.target !== steamAvatar) {
+            openMenu.style.display = 'none';
+          }
+        });
+
+        steamAvatar.addEventListener('click', (event) => {
+          toggleOpenMenu();
+        });
+        
+        steamAvatar.addEventListener('click', (event) => {
+          openMenu.style.display = 'flex';
+        });
       })
       .catch(error => {
         console.error(error);
       });
     } else {
       // masquer burger steam
-      document.querySelector('.burger-steam').style.display = "none"
+      document.querySelector('.steam').style.display = "none"
 
       // disconnected, masquer le bouton Steam
       document.querySelector(".button-steam").style.display = "flex";
@@ -56,7 +64,8 @@ function logoutSteam(e) {
     })
 }
 
-document.querySelector('.steam-logout').addEventListener('click', logoutSteam);
+document.querySelector('#steam-logout').addEventListener('click', logoutSteam);
+console.log(document.querySelector('#steam-logout'));
 
 
 // fetch('http://localhost:4050/api/user', {

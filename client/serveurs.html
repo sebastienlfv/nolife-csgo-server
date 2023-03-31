@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nolife Clothing propose des serveurs CS:GO dotés de modes de jeu populaires tels que Retake, Deathmatch et HS DM.">
   <link rel="stylesheet" href="./style/style.css">
+  <link rel="shortcut icon" href="./client/src/images/32x32.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js" defer></script>
   <script src="./js/steam.js" defer></script>
@@ -21,7 +22,15 @@
           <!-- <a href="#">VIP</a> -->
           <a href="./serveurs.html" class="activ">Nos serveurs</a>
           <!-- <a href="./contact.html">Contact</a> -->
-          <!-- <img src="./src/images/steam_signin.png" class="steam-signin"> -->
+        </div>
+        <a href="http://localhost:4050/api/auth/steam" class="button-steam">
+          <i class="fa-brands fa-steam text-2xl"></i>
+          <span>Login with Steam</span>
+        </a>
+        <div class="burger-steam">
+          <img src="" alt="steam-avatar" class="steam-avatar">
+          <!-- <p class="steam-name"></p> -->
+          <!-- <button class="steam-logout" style="margin-top: 10px; padding: 5px 20px">Logout</button> -->
         </div>
       </nav>
     </header>
