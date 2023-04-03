@@ -1,3 +1,17 @@
+.popupDiv {
+  position: absolute;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 .general-server {
   background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(15px);

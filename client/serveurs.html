@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Nolife Clothing propose des serveurs CS:GO dotés de modes de jeu populaires tels que Retake, Deathmatch et HS DM.">
   <link rel="stylesheet" href="./style/style.css">
-  <link rel="shortcut icon" href="./client/src/images/32x32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./src/images/32x32.png" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/index.js" defer></script>
   <script src="./js/steam.js" defer></script>
@@ -27,10 +27,26 @@
           <i class="fa-brands fa-steam text-2xl"></i>
           <span>Login with Steam</span>
         </a>
-        <div class="burger-steam">
+        <div class="steam">
           <img src="" alt="steam-avatar" class="steam-avatar">
-          <!-- <p class="steam-name"></p> -->
-          <!-- <button class="steam-logout" style="margin-top: 10px; padding: 5px 20px">Logout</button> -->
+          <div class="burger-steam">
+            <div>
+              <i class="fa-solid fa-user"></i>
+              <p>Espace personnel</p>  
+            </div>
+            <div>
+              <i class="fa-solid fa-user"></i>
+              <p>Espace personnel</p>  
+            </div>
+            <div>
+              <i class="fa-solid fa-user"></i>
+              <p>Espace personnel</p>  
+            </div>
+            <div id="steam-logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>Se déconnecter</p>  
+            </div>
+          </div>
         </div>
       </nav>
     </header>
@@ -54,71 +70,61 @@
             <h2 class="server-title">RETAKE #1</h2>
             <p class="server-manyPlayer-retake1"></p>
             <p class="server-map-retake1"></p>
-            <p class="server-ip-retake1">149.202.87.104:27040</p>
-            <a href="steam://connect/149.202.87.104:27040">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27040">CONNECT</a>
           </div>
           <div class="servers retake">
             <h2 class="server-title">RETAKE #2</h2>
             <p class="server-manyPlayer-retake2"></p>
             <p class="server-map-retake2"></p>
-            <p class="server-ip">149.202.87.104:27043</p>
-            <a href="steam://connect/149.202.87.104:27043">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27043">CONNECT</a>
           </div>
           <div class="servers retake">
             <h2 class="server-title">RETAKE #3</h2>
             <p class="server-manyPlayer-retake3"></p>
             <p class="server-map-retake3"></p>
-            <p class="server-ip">149.202.87.104:27046</p>
-            <a href="steam://connect/149.202.87.104:27046">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27046">CONNECT</a>
           </div>
           <div class="servers retake">
             <h2 class="server-title">RETAKE #4</h2>
             <p class="server-manyPlayer-retake4"></p>
             <p class="server-map-retake4"></p>
-            <p class="server-ip">149.202.87.104:27049</p>
-            <a href="steam://connect/149.202.87.104:27049">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27049">CONNECT</a>
           </div>
           <div class="servers retake">
             <h2 class="server-title">RETAKE #5</h2>
             <p class="server-manyPlayer-retake5"></p>
             <p class="server-map-retake5"></p>
-            <p class="server-ip">149.202.87.104:27052</p>
-            <a href="steam://connect/149.202.87.104:27052">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27052">CONNECT</a>
           </div>
           <div class="servers ffa">
             <h2 class="server-title">FFA DM #1</h2>
             <p class="server-manyPlayer-ffa1"></p>
             <p class="server-map-ffa1"></p>
-            <p class="server-ip">149.202.87.104:27015</p>
-            <a href="steam://connect/149.202.87.104:27015">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27015">CONNECT</a>
           </div>
           <div class="servers ffa">
             <h2 class="server-title">FFA DM #2</h2>
             <p class="server-manyPlayer-ffa2"></p>
             <p class="server-map-ffa2"></p>
-            <p class="server-ip">149.202.87.104:27018</p>
-            <a href="steam://connect/149.202.87.104:27018">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27018">CONNECT</a>
           </div>
           <div class="servers ffa">
             <h2 class="server-title">FFA DM #3</h2>
             <p class="server-manyPlayer-ffa3"></p>
             <p class="server-map-ffa3"></p>
-            <p class="server-ip">149.202.87.104:27021</p>
-            <a href="steam://connect/149.202.87.104:27021">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27021">CONNECT</a>
           </div>
           <div class="servers hs">
             <h2 class="server-title">HSMOD DM #1</h2>
             <p class="server-manyPlayer-hsmod1"></p>
             <p class="server-map-hsmod1"></p>
-            <p class="server-ip">149.202.87.104:27100</p>
-            <a href="steam://connect/149.202.87.104:27100">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27100">CONNECT</a>
           </div>
           <div class="servers hs">
             <h2 class="server-title">HSMOD DM #2</h2>
             <p class="server-manyPlayer-hsmod2"></p>
             <p class="server-map-hsmod2"></p>
-            <p class="server-ip">149.202.87.104:27103</p>
-            <a href="steam://connect/149.202.87.104:27103">CONNECT</a>
+            <a class="server-link" href="steam://connect/149.202.87.104:27103">CONNECT</a>
           </div>
         </div>
       </div>

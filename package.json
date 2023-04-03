@@ -22,7 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-steam": "^1.0.17",
     "sass": "^1.55.0",
