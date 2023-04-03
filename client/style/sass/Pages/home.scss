@@ -59,6 +59,20 @@ body {
       color: rgb(216, 81, 81)
     }
     
+    #support {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c0c0c2;
+      cursor: pointer;
+      padding: 10px 5px;
+
+      &:hover {
+        background-color: #57575f;
+        border-radius: 5px;
+      }
+    }
+
     div {
       display: flex;
       align-items: center;

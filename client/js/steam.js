@@ -1,6 +1,7 @@
 // item
 const openMenu = document.querySelector('.burger-steam')
 
+console.log(document.cookie);
 // vérification connexion
 axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .then(response => {
@@ -49,33 +50,36 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
       document.querySelector(".button-steam").style.gap = "5px";
 
       // Désactivation du bouton connect
-      document.querySelector('.server-link').href = '#'
+      const connectButton = document.querySelectorAll('.server-link')
 
-      document.querySelector('.server-link').addEventListener('click', () => {
-        const bodyServeur = document.querySelector('.general-server')
-        const popupDiv = document.createElement('div')
-        const popupText = document.createElement('p')
-        bodyServeur.appendChild(popupDiv)
-        popupDiv.appendChild(popupText)
-        popupDiv.className = 'popupDiv'
-        popupDiv.style.display = 'flex'
-        popupDiv.style.flexDirection = 'column'
-        popupText.innerHTML = 'Connecte toi pour pouvoir accéder aux serveurs'
-        popupText.className = 'popupText'
-        popupText.style.fontSize = '20px'
-
-        const buttonSteam = document.createElement('a')
-        const icone = document.createElement('i')
-        const textSpan = document.createElement('span')
-        buttonSteam.className = 'button-steam'
-        buttonSteam.href = 'http://localhost:4050/api/auth/steam'
-        buttonSteam.style.marginTop = '20px'
-        icone.className = 'fa-brands fa-steam text-2xl'
-        textSpan.innerHTML = 'Login with Steam'
-        popupDiv.appendChild(buttonSteam)
-        buttonSteam.appendChild(icone)
-        buttonSteam.appendChild(textSpan)
-
+      connectButton.forEach(element => {
+        element.href = '#'
+        element.addEventListener('click', () => {
+          const bodyServeur = document.querySelector('.general-server')
+          const popupDiv = document.createElement('div')
+          const popupText = document.createElement('p')
+          bodyServeur.appendChild(popupDiv)
+          popupDiv.appendChild(popupText)
+          popupDiv.className = 'popupDiv'
+          popupDiv.style.display = 'flex'
+          popupDiv.style.flexDirection = 'column'
+          popupText.innerHTML = 'Connecte toi pour pouvoir accéder aux serveurs'
+          popupText.className = 'popupText'
+          popupText.style.fontSize = '20px'
+  
+          const buttonSteam = document.createElement('a')
+          const icone = document.createElement('i')
+          const textSpan = document.createElement('span')
+          buttonSteam.className = 'button-steam'
+          buttonSteam.href = 'http://localhost:4050/api/auth/steam'
+          buttonSteam.style.marginTop = '20px'
+          icone.className = 'fa-brands fa-steam text-2xl'
+          textSpan.innerHTML = 'Login with Steam'
+          popupDiv.appendChild(buttonSteam)
+          buttonSteam.appendChild(icone)
+          buttonSteam.appendChild(textSpan)
+  
+        })
       })
     }
   })
