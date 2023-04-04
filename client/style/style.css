@@ -94,7 +94,7 @@ body {
 }
 
 .container-website {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
 }
 .container-website header nav {
@@ -104,14 +104,22 @@ body {
   margin-top: 50px;
   color: white;
 }
+.container-website header nav .reseau-login {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.container-website header nav .reseau-login i {
+  font-size: 20px;
+  transition: 0.3s;
+}
+.container-website header nav .reseau-login i:hover {
+  color: red;
+}
 .container-website header nav .navigation {
   display: flex;
   align-items: center;
-  gap: 50px;
-  padding: 10px 40px;
-  border: 1px solid black;
-  border-radius: 50px;
-  background-color: rgba(0, 0, 0, 0.3);
+  gap: 30px;
   font-size: 18px;
 }
 .container-website header nav .navigation a {
@@ -166,50 +174,20 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.container-website main .info-container iframe {
+  width: 49%;
+}
 .container-website main .info-container .info-nolife {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(15px);
   height: 250px;
-  width: 30%;
+  width: 49%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   animation: loadhome 2s;
-}
-.container-website main .info-container .info-nolife .container-reseaux {
-  margin-top: 30px;
-  width: 100%;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw:nth-child(2) {
-  width: 55%;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw {
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
-  margin: auto;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw a:hover {
-  color: red;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw a p {
-  margin-top: 5px;
-}
-.container-website main .info-container .info-nolife .container-reseaux .raw:nth-child(2) {
-  margin-top: 30px;
-}
-.container-website main .info-container .info-nolife .container-reseaux i {
-  font-size: 30px;
 }
 .container-website main .info-container .info-nolife img {
   width: 80px;
