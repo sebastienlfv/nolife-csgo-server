@@ -3,6 +3,11 @@
   src: url("../src/font/Oswald.ttf");
 }
 
+@font-face {
+  font-family: 'Prompt';
+  src: url("../src/font/Prompt.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -220,16 +225,12 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         color: white;
         animation: loadhome 2s;
 
         img {
           width: 80px;
-          margin-top: 15px;
-        }
-
-        ul {
-          margin-top: 15px;
         }
       }
       
@@ -256,6 +257,7 @@ body {
       align-items: center;
       justify-content: center;
       animation: loadhome 2s;
+      font-family: 'Prompt';
 
       .left-container {
         // height: 430px;
@@ -292,18 +294,18 @@ body {
         .joinus {
           width: 100%;
           display: flex;
-          justify-content: center;
           margin-top: 100px;
 
           button {
             padding: 15px 30px;
-            border-radius: 10px;
             color: #fff;
             background-color: red;
-            border: 1px solid #000;
+            border: none;
             cursor: pointer;
             font-weight: bold;
             transition: 0.3s;
+            font-family: "Prompt";
+            letter-spacing: 2px;
 
             &:hover {
               color: red;
