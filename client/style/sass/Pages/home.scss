@@ -55,44 +55,59 @@ body {
     display: none;
     flex-direction: column;
     width: 200px;
-    background-color: #44444b;
+    background-color: #000;
     color: #c0c0c2;
     margin-top: 20px;
-    padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
     top: 70px;
     right: 0px;
     z-index: 1000;
+    
+
+    .fa-caret-up {
+      position: absolute;
+      top: -16px;
+      right: 27px;
+      font-size: 30px;
+      color: #000;
+    }
 
     div:nth-child(4) {
-      color: rgb(216, 81, 81)
+      color: red
     }
     
     #support {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #c0c0c2;
+      color: #fff;
+      padding: 10px 15px;
+      border-left: 2px solid transparent;
       cursor: pointer;
-      padding: 10px 5px;
 
       &:hover {
-        background-color: #57575f;
-        border-radius: 5px;
+        background-color: #330000;
+        border-left: 2px solid red;
       }
+    }
+
+    #steam-logout {
+      color: red;
     }
 
     div {
       display: flex;
       align-items: center;
       gap: 10px;
+      color: #fff;
       cursor: pointer;
-      padding: 10px 5px;
+      border-left: 2px solid transparent;
+      padding: 10px 15px;
 
       &:hover {
-        background-color: #57575f;
-        border-radius: 5px;
+        background-color: #330000;
+        border-left: 2px solid red;
       }
     }
   }
