@@ -6,6 +6,9 @@ console.log(document.cookie);
 axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .then(response => {
     console.log('connected?', response.data); 
+    const steamAvatar = document.querySelector('.steam-avatar')
+    steamAvatar.style.display = 'flex'
+
 
     if(response.data === 'connected') {
       // Connnected, masquer le bouton Steam

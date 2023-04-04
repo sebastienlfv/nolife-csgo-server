@@ -1,4 +1,9 @@
-
+	var opts = {
+    color: 'white'
+  }
+  
+  // Créer le spinner de chargement
+	var spinner = new Spinner(opts).spin(document.getElementById('spinner'));
 
 // Info server
 
@@ -88,12 +93,20 @@ async function getServerInfo() {
   servers.forEach((server, index) => {
     axios.get(url + server.info)
       .then((response) => {
+        // Masquer le spinner de chargement
+				spinner.stop();
+        // afficher serveurs
+        const listServers = document.querySelector('.list-server')
+        listServers.style.display = 'block'
         console.log('api info', response.data);
         const manyPlayer = document.querySelector(server.manyPlayer);
         const map = document.querySelector(server.map);
         manyPlayer.innerHTML = response.data.players + '/' + response.data.maxPlayers;
         map.innerHTML = response.data.map;
-      });
+      })
+      .catch((err) => {
+        location.reload()
+      })
   });
 }
 
