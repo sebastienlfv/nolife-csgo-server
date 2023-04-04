@@ -71,6 +71,11 @@ body {
       right: 27px;
       font-size: 30px;
       color: #000;
+      z-index: -1;
+
+      &:hover {
+        color: #000;
+      }
     }
 
     div:nth-child(4) {
