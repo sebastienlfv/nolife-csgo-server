@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/a143a2c033.js" crossorigin="anonymous"></script>
     <script src="./js/steam.js" defer></script>
+    <script src="./js/support.js" defer></script>
     <title>NOLIFE - SUPPORT</title>
   </head>
 <body>
@@ -58,7 +59,51 @@
     </header>
     <main class="container-formulaire">
       <h1>Formulaire de contact / signalement</h1>
-      <div></div>
+      <div class="separator"></div>
+      <form class="form-support">
+        <div>
+          <p>Quelle raison ?<span>*</span></p>
+          <select name="reason" id="contact-reason">
+            <option value="" disabled selected>-</option>
+            <option value="signalement">Signalement</option>
+            <option value="adhesion">Adhésion staff Nolife</option>
+          </select>
+        </div>
+        <div class="signalement">
+          <div>
+            <p>Lien steam du joueur concerné<span>*</span></p>
+            <input type="text" name="steam-link" id="steam-link">
+          </div>
+          <div>
+            <p>Éxplique nous le problème<span>*</span></p>
+            <textarea type="text" name="explication" id="explication"></textarea>
+          </div>
+        </div>
+        <div class="adhesion-staff">
+          <div>
+            <p>Nom / Prénom<span>*</span></p>
+            <input type="text" name="name" id="name">
+          </div>
+          <div>
+            <p>E-mail<span>*</span></p>
+            <input type="email" name="email" id="email">
+          </div>
+          <div>
+            <p>Date de naissance<span>*</span></p>
+            <input type="email" name="email" id="email">
+          </div>
+          <div>
+            <p>Que souhaites-tu apporter entant que modérateur sur nos serveurs ?<span>*</span></p>
+            <textarea type="text" name="explain-modo" id="explain-modo"></textarea>
+          </div>
+          <div>
+            <p>As-tu une expérience entant que staff sur un serveur ?<span>*</span></p>
+            <textarea type="text" name="exp-staff" id="exp-staff"></textarea>
+          </div>
+        </div>
+        <input type="submit" value="Envoyer" id="submit">
+      </form>
+      <p class="not_connected-form">Connecte toi pour accéder aux formulaire</p>
     </main>
   </div>
   <footer>

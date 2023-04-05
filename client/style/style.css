@@ -38,6 +38,9 @@ body {
   background-color: red;
   padding: 10px 40px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .steam {
@@ -417,15 +420,92 @@ footer .footer-partner img:hover {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container-formulaire {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  padding: 50px;
+  margin-bottom: 231px;
+}
+.container-formulaire .not_connected-form {
+  color: red;
+  font-size: 20px;
+}
 .container-formulaire h1 {
   color: #fff;
   margin-bottom: 10px;
 }
-.container-formulaire div {
+.container-formulaire .separator {
   width: 250px;
   background-color: red;
   height: 3px;
   border-radius: 50px;
+}
+.container-formulaire .form-support .signalement, .container-formulaire .form-support .adhesion-staff {
+  display: none;
+}
+.container-formulaire .form-support #submit {
+  padding: 15px 30px;
+  color: #fff;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  font-family: "Prompt";
+  letter-spacing: 2px;
+  margin-top: 20px;
+  display: none;
+}
+.container-formulaire .form-support #submit:hover {
+  color: red;
+  background-color: #fff;
+}
+.container-formulaire .form-support div {
+  margin-top: 40px;
+}
+.container-formulaire .form-support div p {
+  color: white;
+  font-size: 25px;
+  position: relative;
+}
+.container-formulaire .form-support div p span {
+  color: red;
+  position: absolute;
+  top: -10px;
+  margin-left: 5px;
+}
+.container-formulaire .form-support div select {
+  margin-top: 15px;
+  height: 30px;
+  width: 250px;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+.container-formulaire .form-support div select:focus {
+  outline: none;
+}
+.container-formulaire .form-support div input {
+  margin-top: 15px;
+  height: 30px;
+  width: 400px;
+  border-radius: 5px;
+  padding: 0px 10px;
+  border: none;
+}
+.container-formulaire .form-support div input:focus {
+  outline: none;
+}
+.container-formulaire .form-support div textarea {
+  margin-top: 15px;
+  height: 150px;
+  width: 400px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border: none;
+}
+.container-formulaire .form-support div textarea:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 900px) {

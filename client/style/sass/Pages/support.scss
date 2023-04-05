@@ -1,0 +1,104 @@
+.container-formulaire {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  padding: 50px;
+  margin-bottom: 231px;
+
+  .not_connected-form {
+    color: red;
+    font-size: 20px;
+  }
+
+  h1 {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .separator {
+    width: 250px;
+    background-color: red;
+    height: 3px;
+    border-radius: 50px;
+  }
+
+  .form-support {
+
+    .signalement, .adhesion-staff {
+      display: none;
+    }
+
+    #submit {
+      padding: 15px 30px;
+      color: #fff;
+      background-color: red;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      font-family: "Prompt";
+      letter-spacing: 2px;
+      margin-top: 20px;
+      display: none;
+
+      &:hover {
+        color: red;
+        background-color: #fff;
+      }
+    }
+
+    div {
+      margin-top: 40px;
+      p {
+        color: white;
+        font-size: 25px;
+        position: relative;
+
+        span {
+          color: red;
+          position: absolute;
+          top: -10px;
+          margin-left: 5px;
+        }
+      }
+
+      select {
+        margin-top: 15px;
+        height: 30px;
+        width: 250px;
+        border-radius: 5px;
+        padding: 0px 10px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      input {
+        margin-top: 15px;
+        height: 30px;
+        width: 400px;
+        border-radius: 5px;
+        padding: 0px 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      textarea {
+        margin-top: 15px;
+        height: 150px;
+        width: 400px;
+        border-radius: 5px;
+        padding: 10px 10px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

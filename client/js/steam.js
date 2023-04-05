@@ -1,7 +1,6 @@
 // item
 const openMenu = document.querySelector('.burger-steam')
 
-console.log(document.cookie);
 // vérification connexion
 axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .then(response => {
@@ -44,6 +43,12 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
         console.error(error);
       });
     } else {
+      // masquer formulaire
+      const formSupport = document.querySelector('.form-support')
+      console.log(formSupport);
+      formSupport.style.display = 'none'
+      document.querySelector('.separator').style.marginBottom = '125px'
+
       // masquer burger steam
       document.querySelector('.steam').style.display = "none"
 
