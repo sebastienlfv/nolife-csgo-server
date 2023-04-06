@@ -36,3 +36,16 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
   .catch(error => {
     console.error(error);
   });
+
+
+submitButton.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  // récuperer les valeurs du formulaire
+
+
+  // les datas
+
+  
+  // fetch
+})

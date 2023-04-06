@@ -12,6 +12,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { Session, sequelize } = require('./config/db');
 const { Op } = require('sequelize');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer')
 dotenv.config()
 
 // STEAM
@@ -187,5 +188,33 @@ app.use('/api/serveur', serveurRoutes);
 
 // static files
 app.use(express.static(__dirname + '/public'));
+
+
+// nodemailer
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'sebastienlfv.pro@gmail.com',
+    pass: process.env.EMAIL_PASS
+  }
+})
+
+app.post('/api/send-mail', function(req, res) {
+  var mailOptions = {
+    from: 'sebastienlfv.pro@gmail.com',
+    to: 'sebastienlfv.pro@gmail.com',
+    subject: 'Formulaire de contact / signalement',
+    html: ''
+    
+  }
+
+  transporter.sendMail(mailOptions, function(err, info) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log('Email envoyé : ' + info.response);
+    }
+  })
+})
 
 module.exports = app;
