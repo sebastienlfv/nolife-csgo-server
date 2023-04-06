@@ -203,7 +203,7 @@ app.post('/api/send-mail', function(req, res) {
   var mailOptions = {
     from: 'sebastienlfv.pro@gmail.com',
     to: 'sebastienlfv.pro@gmail.com',
-    subject: 'Formulaire de contact / signalement',
+    subject: 'Formulaire de contact / signalement - CSGO NOLIFE',
     html: ''
     
   }
