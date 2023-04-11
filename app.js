@@ -200,12 +200,28 @@ var transporter = nodemailer.createTransport({
 })
 
 app.post('/api/send-mail', function(req, res) {
+  var pseudo = req.body.pseudo
+  var pseudo2 = req.body.pseudo2
+  var email = req.body.email
+  var email2 = req.body.email2
+  var steamLink = req.body.steamLink
+  var explication = req.body.explication
+  var name = req.body.name
+  var birthday = req.body.birthday
+  var explainModo = req.body.explainModo
+  var expStaff = req.body.expStaff
   var mailOptions = {
     from: 'sebastienlfv.pro@gmail.com',
     to: 'sebastienlfv.pro@gmail.com',
-    subject: 'Formulaire de contact / signalement - CSGO NOLIFE',
-    html: ''
-    
+    subject: 'Formulaire de contact / signalement - CSGO NOLIFE' + ' - ' + pseudo + pseudo2,
+    html: `<h1 style="font-size: 25px; color: #000">Formulaire de contact / signalement - CSGO NOLIFE - ${pseudo || pseudo2}</h1> </br> 
+    <p style="font-weight: bold; margin-top: 20px">email : <span style="font-weight: normal">${email || email2}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 20px">Nom : <span style="font-weight: normal">${name}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 10px">Profile steam de la personne report : <span style="font-weight: normal">${steamLink}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 20px">Explication du problème : <span style="font-weight: normal">${explication}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 20px">Motivation du modérateur : <span style="font-weight: normal">${explainModo}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 20px">Expérience staff : <span style="font-weight: normal">${expStaff}</span></p> </br>
+    <p style="font-weight: bold; margin-top: 20px">Date de naissance : <span style="font-weight: normal">${birthday}</span></p> </br>`
   }
 
   transporter.sendMail(mailOptions, function(err, info) {

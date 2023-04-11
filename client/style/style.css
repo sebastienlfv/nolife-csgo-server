@@ -420,6 +420,11 @@ footer .footer-partner img:hover {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.errorForm {
+  color: red;
+  margin-top: 20px;
+}
+
 .container-formulaire {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(15px);

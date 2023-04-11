@@ -42,51 +42,49 @@ submitButton.addEventListener('click', (e) => {
   e.preventDefault()
 
   // récuperer les valeurs du formulaire
-  if(reasonChoose.value === 'signalement') {
-    let email = document.getElementById('email')
-    let steamLink = document.getElementById('steam-link')
-    let explication = document.getElementById('explication')
-    var data = { email: email, steamLink: steamLink, explication: explication }
-    fetch('http://localhost:4050/api/send-mail', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  let pseudo = document.getElementById('pseudo').value
+  let pseudo2 = document.getElementById('pseudo2').value
+  let email = document.getElementById('email').value
+  let email2 = document.getElementById('email2').value
+  let steamLink = document.getElementById('steam-link').value
+  let explication = document.getElementById('explication').value
+  let name = document.getElementById('name').value
+  let birthday = document.getElementById('birthday').value
+  let explainModo = document.getElementById('explain-modo').value
+  let expStaff = document.getElementById('exp-staff').value
+  var data = { pseudo: pseudo, pseudo2: pseudo2, email: email, email2: email2, steamLink: steamLink, explication: explication, name: name, birthday: birthday, explainModo: explainModo, expStaff: expStaff }
+    
+  // if(reasonChoose.value === 'signalement' && pseudo === '' || email === '' || steamLink === '' || explication === '') {
+  //   document.querySelector('.errorForm').innerHTML = 'Veuillez remplir les informations obligatoire'
+  //   return false
+  // } else if (reasonChoose.value === 'adhesion' && pseudo2 === '' || name === '' || birthday === '' || explainModo === '' || expStaff === '') {
+  //   document.querySelector('.errorForm').innerHTML = 'Veuillez remplir les informations obligatoire'
+  //   return false
+  // }
 
-    setTimeout(() => {
-      window.location.href = '../index.html'
-    }, 1000)
-  } else if (reasonChoose.value === 'adhesion') {
-    let name = document.getElementById('name')
-    let email = document.getElementById('email')
-    let birthday = document.getElementById('birthday')
-    let explainModo = document.getElementById('explain-modo')
-    let expStaff = document.getElementById('exp-staff')
-    var data = { name: name, email: email, birthday: birthday, explainModo: explainModo, expStaff: expStaff }
-    fetch('http://localhost:4050/api/send-mail', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  // if(pseudo === '' || email === '' || steamLink === '' || explication === '' || name === '' || birthday === '' || explainModo === '' || expStaff === '') {
+  //   document.querySelector('.errorForm').innerHTML = 'Veuillez remplir les informations obligatoire'
+  //   return false
+  // }
 
-    setTimeout(() => {
-      window.location.href = '../index.html'
-    }, 1000)
-  }
+  fetch('http://localhost:4050/api/send-mail', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  })
+
+  document.querySelector('.errorForm').innerHTML = 'Formulaire envoyé !'
+
+  setTimeout(() => {
+    window.location.href = '../index.html'
+  }, 1000)
 
   // les datas
 

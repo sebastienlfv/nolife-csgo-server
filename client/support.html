@@ -71,41 +71,50 @@
         </div>
         <div class="signalement">
           <div>
+            <p>Pseudo<span>*</span></p>
+            <input type="text" name="pseudo" id="pseudo" required>
+          </div>
+          <div>
             <p>E-mail<span>*</span></p>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
           </div>
           <div>
             <p>Lien steam du joueur concerné<span>*</span></p>
-            <input type="text" name="steam-link" id="steam-link">
+            <input type="text" name="steam-link" id="steam-link" required>
           </div>
           <div>
             <p>Éxplique nous le problème<span>*</span></p>
-            <textarea type="text" name="explication" id="explication"></textarea>
+            <textarea type="text" name="explication" id="explication" required></textarea>
           </div>
         </div>
         <div class="adhesion-staff">
           <div>
+            <p>Pseudo<span>*</span></p>
+            <input type="text" name="pseudo2" id="pseudo2" required>
+          </div>
+          <div>
             <p>Nom / Prénom<span>*</span></p>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" required>
           </div>
           <div>
             <p>E-mail<span>*</span></p>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email2" id="email2" required>
           </div>
           <div>
             <p>Date de naissance<span>*</span></p>
-            <input type="date" name="date" id="birthday">
+            <input type="date" name="date" id="birthday" required>
           </div>
           <div>
             <p>Que souhaites-tu apporter entant que modérateur sur nos serveurs ?<span>*</span></p>
-            <textarea type="text" name="explain-modo" id="explain-modo"></textarea>
+            <textarea type="text" name="explain-modo" id="explain-modo" required></textarea>
           </div>
           <div>
             <p>As-tu une expérience entant que staff sur un serveur ?<span>*</span></p>
-            <textarea type="text" name="exp-staff" id="exp-staff"></textarea>
+            <textarea type="text" name="exp-staff" id="exp-staff" required></textarea>
           </div>
         </div>
         <button type="submit" name="submit" id="submit">Envoyer</button>
+        <p class="errorForm"></p>
       </form>
       <p class="not_connected-form">Connecte toi pour accéder aux formulaire</p>
     </main>
