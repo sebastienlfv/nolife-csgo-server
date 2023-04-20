@@ -144,3 +144,15 @@ module.exports.getPlayerHsMod2 = async (req, res) => {
   const ip = '149.202.87.104:27103'
   await getPlayerInfo(req, res, ip)
 }
+
+// BOT DM
+
+module.exports.getInfoBotFfa = async (req, res) => {
+  const ip = '149.202.87.104:27200'
+  await getServerInfo(req, res, ip)
+}
+
+module.exports.getPlayerBotFfa = async (req, res) => {
+  const ip = '149.202.87.104:27200'
+  await getPlayerInfo(req, res, ip)
+}

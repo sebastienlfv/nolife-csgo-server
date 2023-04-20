@@ -70,9 +70,15 @@ async function getServerInfo() {
       manyPlayer: '.server-manyPlayer-hsmod2',
       map: '.server-map-hsmod2'
     },
+    {
+      info: '/api/serveur/InfoBotFfa',
+      player: '/api/serveur/PlayerBotFfa',
+      manyPlayer: '.server-manyPlayer-botffa',
+      map: '.server-map-botffa'
+    },
   ];
 
-  const [retake1, retake2, retake3, retake4, retake5, ffa1, ffa2, ffa3, hsmod1, hsmod2] = await Promise.all([
+  const [retake1, retake2, retake3, retake4, retake5, ffa1, ffa2, ffa3, hsmod1, hsmod2, botffa] = await Promise.all([
     axios.get(url + servers[0].info),
     axios.get(url + servers[1].info),
     axios.get(url + servers[2].info),
@@ -82,11 +88,12 @@ async function getServerInfo() {
     axios.get(url + servers[6].info),
     axios.get(url + servers[7].info),
     axios.get(url + servers[8].info),
-    axios.get(url + servers[9].info)
+    axios.get(url + servers[9].info),
+    axios.get(url + servers[10].info)
   ])
 
-  const TotalPlayers = retake1.data.players + retake2.data.players + retake3.data.players + retake4.data.players + retake5.data.players + ffa1.data.players + ffa2.data.players + ffa3.data.players + hsmod1.data.players + hsmod2.data.players;
-  const maxPlayers = retake1.data.maxPlayers + retake2.data.maxPlayers + retake3.data.maxPlayers + retake4.data.maxPlayers + retake5.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers + ffa3.data.maxPlayers + hsmod1.data.maxPlayers + hsmod2.data.maxPlayers;
+  const TotalPlayers = retake1.data.players + retake2.data.players + retake3.data.players + retake4.data.players + retake5.data.players + ffa1.data.players + ffa2.data.players + ffa3.data.players + hsmod1.data.players + hsmod2.data.players + botffa.data.players;
+  const maxPlayers = retake1.data.maxPlayers + retake2.data.maxPlayers + retake3.data.maxPlayers + retake4.data.maxPlayers + retake5.data.maxPlayers + ffa1.data.maxPlayers + ffa2.data.maxPlayers + ffa3.data.maxPlayers + hsmod1.data.maxPlayers + hsmod2.data.maxPlayers + botffa.data.maxPlayers;
   const generalPlayers = document.querySelector('.player-online');
   generalPlayers.innerHTML = 'Joueurs en ligne: ' + TotalPlayers + '/' + maxPlayers;
 

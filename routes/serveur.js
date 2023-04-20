@@ -40,5 +40,10 @@ router.get('/PlayerHsMod1', serveurCtrl.getPlayerHsMod1)
 router.get('/InfoHsMod2', serveurCtrl.getInfoHsMod2)
 router.get('/PlayerHsMod2', serveurCtrl.getPlayerHsMod2)
 
+// route bot ffa serveurs
+
+router.get('/InfoBotFfa', serveurCtrl.getInfoBotFfa)
+router.get('/PlayerBotFfa', serveurCtrl.getPlayerBotFfa)
+
 
 module.exports = router
