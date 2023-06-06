@@ -76,6 +76,20 @@ body {
 .steam .burger-steam div:nth-child(4) {
   color: red;
 }
+.steam .burger-steam #stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  border-top-right-radius: 4px;
+  padding: 10px 15px;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+}
+.steam .burger-steam #stats:hover {
+  background-color: #330000;
+  border-left: 2px solid red;
+}
 .steam .burger-steam #support {
   display: flex;
   align-items: center;
