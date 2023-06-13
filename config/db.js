@@ -1,25 +1,46 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('session_nolifecsgo', 'root', 'root', {
+// Base de données existante
+const sequelizeSteam = new Sequelize('session_nolifecsgo', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql'
 });
 
-sequelize.authenticate()
+sequelizeSteam.authenticate()
   .then(() => {
-    console.log("Connexion à la BDD MYSQL");
+    console.log("Connexion à la BDD MySQL existante réussie");
   }).catch(() => {
-  console.log("Connexion à la BDD MYSQL raté");
-})
+    console.log("Connexion à la BDD MySQL existante échouée");
+  });
 
-sequelize.sync().then(() => {
-  console.log('Les modèles ont été synchronisés avec la base de données');
+sequelizeSteam.sync().then(() => {
+  console.log('Les modèles ont été synchronisés avec la base de données existante');
 }).catch((err) => {
-  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données', err);
+  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données existante', err);
 });
 
 
-const Session = sequelize.define('sessions', {
+// base de données csgo_ffa
+const sequelizeCsgoFfa = new Sequelize('csgo_stats_ffa', 'root', 'root', {
+  host: '149.202.87.104',
+  dialect: 'mysql'
+});
+
+sequelizeCsgoFfa.authenticate()
+  .then(() => {
+    console.log("Connexion à la nouvelle BDD MySQL réussie");
+  }).catch(() => {
+  console.log("Connexion à la nouvelle BDD MySQL échouée");
+});
+
+sequelizeCsgoFfa.sync().then(() => {
+  console.log('Les modèles ont été synchronisés avec la nouvelle base de données');
+}).catch((err) => {
+  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la nouvelle base de données', err);
+});
+
+
+const Session = sequelizeSteam.define('sessions', {
   sid: {
     type: Sequelize.STRING,
     primaryKey: true,
@@ -28,4 +49,4 @@ const Session = sequelize.define('sessions', {
   data: Sequelize.TEXT,
 });
 
-module.exports = { Session, sequelize };
+module.exports = { Session, sequelizeSteam, sequelizeCsgoFfa };

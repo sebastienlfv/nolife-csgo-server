@@ -9,7 +9,7 @@ const SteamStrategy = passportSteam.Strategy;
 const port = 4050
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { Session, sequelize } = require('./config/db');
+const { Session, sequelizeSteam, sequelizeCsgoFfa } = require('./config/db');
 const { Op } = require('sequelize');
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer')
@@ -47,7 +47,7 @@ passport.use(new SteamStrategy({
 ));
 
 const sessionStore = new SequelizeStore({
-  db: sequelize,
+  db: sequelizeSteam,
   table: 'sessions',
   expiration: 30000 // durée de vie des sessions en millisecondes (ici, 30 secondes)
 });

@@ -1,6 +1,5 @@
 const { queryGameServerInfo, queryGameServerPlayer } = require('steam-server-query')
 
-
 // convert BigInt to string recursively in an object
 function bigIntToString(obj) {
   for (const key in obj) {
@@ -19,8 +18,8 @@ const getServerInfo = async (req, res, ip) => {
     const infoResponseStr = bigIntToString(infoResponse)
     res.json(infoResponseStr)
   } catch (error) {
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
+    console.error(error)
+    // Ne pas envoyer de réponse d'erreur pour éviter de planter l'application
   }
 }
 
@@ -29,12 +28,11 @@ const getPlayerInfo = async (req, res, ip) => {
     const playerResponse = await queryGameServerPlayer(ip)
     const playerResponseStr = bigIntToString(playerResponse)
     res.json(playerResponseStr)
-  } catch (err){
-    console.error(err)
-    res.status(500).json({ err: 'Une erreur s\'est produite' })
+  } catch (error) {
+    console.error(error)
+    // Ne pas envoyer de réponse d'erreur pour éviter de planter l'application
   }
 }
-
 
 // RETAKE
 
@@ -87,9 +85,6 @@ module.exports.getPlayerRetake5 = async (req, res) => {
   const ip = '149.202.87.104:27052'
   await getPlayerInfo(req, res, ip)
 }
-
-
-
 
 // FFA
 

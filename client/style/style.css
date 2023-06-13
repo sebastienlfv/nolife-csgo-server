@@ -31,7 +31,11 @@ body {
 }
 
 .activ {
-  color: red;
+  color: red !important;
+}
+
+.activ-stats {
+  background-color: red !important;
 }
 
 .button-steam {
@@ -525,6 +529,80 @@ footer .footer-partner img:hover {
 }
 .container-formulaire .form-support div textarea:focus {
   outline: none;
+}
+
+.stats-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  height: 500px;
+  margin-top: 80px;
+  border-radius: 10px;
+  display: flex;
+  font-family: "Prompt";
+  color: #fff;
+  flex-direction: column;
+}
+.stats-container .navigation-serveurs {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  height: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.stats-container .navigation-serveurs p {
+  display: flex;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.stats-container .navigation-serveurs p:hover {
+  background-color: red;
+}
+.stats-container .stats-detail {
+  padding: 40px;
+  display: flex;
+}
+.stats-container .stats-detail .left-side {
+  width: 50%;
+}
+.stats-container .stats-detail .left-side .details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.stats-container .stats-detail .left-side .details div {
+  background-color: rgb(82, 14, 14);
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.stats-container .stats-detail .right-side {
+  width: 50%;
+}
+.stats-container .stats-detail .right-side .details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.stats-container .stats-detail .right-side .details div {
+  background-color: rgb(82, 14, 14);
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.stats-container .ffa-stats, .stats-container .hsmod-stats {
+  display: none;
 }
 
 @media screen and (max-width: 900px) {

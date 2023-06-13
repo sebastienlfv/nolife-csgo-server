@@ -36,8 +36,13 @@ body {
 }
 
 .activ {
-  color: red;
+  color: red !important;
 }
+
+.activ-stats {
+  background-color: red !important;
+}
+
 
 .button-steam {
   background-color: red;

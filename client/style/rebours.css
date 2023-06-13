@@ -1,0 +1,43 @@
+#countdown {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80vh;
+  width: 70%;
+  margin: auto;
+}
+
+i {
+  font-size: 60px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+i:hover {
+  color: red;
+}
+
+.time {
+  display: flex;
+}
+
+#countdown > .time > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+#countdown span {
+  display: block;
+  font-size: 50px;
+  color: #fff;
+}
+
+.smalltext {
+  color: #888;
+  font-size: 16px;
+}
