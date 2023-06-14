@@ -8,15 +8,15 @@ const sequelizeSteam = new Sequelize('session_nolifecsgo', 'root', 'root', {
 
 sequelizeSteam.authenticate()
   .then(() => {
-    console.log("Connexion à la BDD MySQL existante réussie");
+    console.log("Connexion à la BDD STEAM MySQL réussie");
   }).catch(() => {
-    console.log("Connexion à la BDD MySQL existante échouée");
+    console.log("Connexion à la BDD STEAM MySQL échouée");
   });
 
 sequelizeSteam.sync().then(() => {
-  console.log('Les modèles ont été synchronisés avec la base de données existante');
+  console.log('Les modèles ont été synchronisés avec la base de données steam');
 }).catch((err) => {
-  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données existante', err);
+  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données steam', err);
 });
 
 
@@ -28,15 +28,15 @@ const sequelizeCsgoFfa = new Sequelize('csgo_stats_ffa', 'root', 'root', {
 
 sequelizeCsgoFfa.authenticate()
   .then(() => {
-    console.log("Connexion à la nouvelle BDD MySQL réussie");
+    console.log("Connexion à la BDD FFA MySQL réussie");
   }).catch(() => {
-  console.log("Connexion à la nouvelle BDD MySQL échouée");
+  console.log("Connexion à la BDD FFA MySQL échouée");
 });
 
 sequelizeCsgoFfa.sync().then(() => {
-  console.log('Les modèles ont été synchronisés avec la nouvelle base de données');
+  console.log('Les modèles ont été synchronisés avec la base de données serveurs FFA');
 }).catch((err) => {
-  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la nouvelle base de données', err);
+  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données serveurs FFA', err);
 });
 
 

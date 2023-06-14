@@ -163,6 +163,7 @@ app.get('/api/logout', function(req, res){
 
 // import routes
 const serveurRoutes = require('./routes/serveur');
+const statsFfaRoutes = require('./routes/statsFFA')
 
 // cors
 
@@ -185,6 +186,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
 app.use('/api/serveur', serveurRoutes);
+app.use('/api/statsFFA', statsFfaRoutes)
 
 // static files
 app.use(express.static(__dirname + '/public'));
