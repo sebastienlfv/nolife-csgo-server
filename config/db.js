@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 // Base de données existante
 const sequelizeSteam = new Sequelize('session_nolifecsgo', 'root', 'root', {
-  host: 'localhost',
+  host: '149.202.87.104',
   dialect: 'mysql'
 });
 

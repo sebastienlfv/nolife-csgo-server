@@ -17,6 +17,7 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
       axios.get('http://localhost:4050/api/user', { withCredentials: true })
       .then(response => {
         console.log('steam info', response.data);
+        localStorage.setItem('steam_id', response.data.id)
         const avatar = response.data.photos[2].value
         const steamAvatar = document.querySelector('.steam-avatar')
         steamAvatar.src = avatar
