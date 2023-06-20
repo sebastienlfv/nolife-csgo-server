@@ -41,21 +41,46 @@ console.log(retakeButton);
 
 axios.get('http://localhost:4050/api/statsFFA/Players')
   .then(players => {
-    console.log('api stats ffa', players.data);
     const steamID = localStorage.getItem('steam_id');
-    console.log('steamID localstorage', steamID);
-    
-    const player = players.data.find((player) => player.steam_id === steamID);
-    
-    if (player) {
-      console.log('Information du joueur du joueur :', player);
 
+    const player = players.data.find((player) => player.steam_id === steamID);
+
+    if (player) {
+      console.log('Information du joueur :', player);
       console.log('account_id', player.account_id);
+
       // Effectuer des actions avec les statistiques du joueur
+      axios.get('http://localhost:4050/api/statsFFA/Players_stats')
+        .then(stats => {
+
+          const playerStats = stats.data.find((stats) => stats.account_id === player.account_id);
+
+          if (playerStats) {
+            console.log('Statistiques du joueur :', playerStats);
+
+            console.log('Pseudo', player.nickname);
+            // importation stats ffa
+            document.querySelector('.pseudo-stats-ffa').innerHTML = player.nickname
+            document.querySelector('.ffa-ratio-stats').innerHTML = playerStats.kills / playerStats.deaths
+            if (isNaN(playerStats.kills / playerStats.deaths)) {
+              document.querySelector('.ffa-ratio-stats').innerHTML = '0.00';
+            }
+
+            console.log('kills',playerStats.kills / playerStats.deaths);
+            console.log('morts',playerStats.deaths);
+          } else {
+            console.log('Les statistiques du joueur n\'ont pas été trouvées.');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
     } else {
       console.log('Le joueur correspondant au steamID n\'a pas été trouvé.');
     }
   })
   .catch(error => {
     console.log(error);
-  })
+  });
+

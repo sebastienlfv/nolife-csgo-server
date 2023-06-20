@@ -46,6 +46,7 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
     } else {
       // masquer burger steam
       document.querySelector('.steam').style.display = "none"
+      localStorage.clear()
 
       // disconnected, masquer le bouton Steam
       document.querySelector(".button-steam").style.display = "flex";

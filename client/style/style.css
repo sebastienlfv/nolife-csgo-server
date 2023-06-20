@@ -531,6 +531,14 @@ footer .footer-partner img:hover {
   outline: none;
 }
 
+.retake-button, .hsmod-button {
+  display: none !important;
+}
+
+.retake-stats, .hsmod-stats {
+  display: none !important;
+}
+
 .stats-container {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(15px);
@@ -601,7 +609,7 @@ footer .footer-partner img:hover {
   align-items: center;
   padding: 10px;
 }
-.stats-container .ffa-stats, .stats-container .hsmod-stats {
+.stats-container .retake-stats, .stats-container .hsmod-stats {
   display: none;
 }
 
