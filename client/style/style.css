@@ -574,14 +574,17 @@ footer .footer-partner img:hover {
 .stats-container .stats-detail {
   padding: 40px;
   display: flex;
+  justify-content: center;
 }
 .stats-container .stats-detail .left-side {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .stats-container .stats-detail .left-side .details {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
   margin-top: 20px;
 }
 .stats-container .stats-detail .left-side .details div {
