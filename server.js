@@ -1,13 +1,13 @@
-const http = require('https');
+const http = require('http');
 const app = require('./app');
 const dotenv = require('dotenv')
 const fs = require('fs')
 dotenv.config()
 
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/nolifecsgo.fr/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/nolifecsgo.fr/fullchain.pem')
-}
+// const options = {
+//     key: fs.readFileSync('/etc/letsencrypt/live/nolifecsgo.fr/privkey.pem'),
+//     cert: fs.readFileSync('/etc/letsencrypt/live/nolifecsgo.fr/fullchain.pem')
+// }
 
 const normalizePort = val => {
     const port = parseInt(val, 10);
@@ -44,7 +44,7 @@ const errorHandler = error => {
     }
 };
 
-const server = http.createServer(options, app);
+const server = http.createServer(app);
 
 server.on('error', errorHandler);
 server.on('listening', () => {
