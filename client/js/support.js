@@ -5,6 +5,8 @@ const adhesionDiv = document.querySelector('.adhesion-staff')
 
 const submitButton = document.querySelector('#submit')
 
+const ipAPIsupport = 'http://localhost:4050'
+
 reasonChoose.addEventListener('change', function() {
   if (reasonChoose.value === 'signalement') {
     signalementDiv.style.display = 'block'
@@ -17,7 +19,7 @@ reasonChoose.addEventListener('change', function() {
   }
 })
 
-axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
+axios.get(ipAPIsupport + '/api/checkSession', { withCredentials: true })
   .then(response => {
     console.log('connected?', response.data); 
     const steamAvatar = document.querySelector('.steam-avatar')
@@ -67,7 +69,7 @@ submitButton.addEventListener('click', (e) => {
   //   return false
   // }
 
-  fetch('http://localhost:4050/api/send-mail', {
+  fetch(ipAPIsupport + '/api/send-mail', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)

@@ -1,8 +1,10 @@
 // item
 const openMenu = document.querySelector('.burger-steam')
 
+const ipAPI = 'http://localhost:4050'
+
 // vérification connexion
-axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
+axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
   .then(response => {
     console.log('connected?', response.data); 
     const steamAvatar = document.querySelector('.steam-avatar')
@@ -14,7 +16,7 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
       document.querySelector(".button-steam").style.display = "none";
 
       // Récupération des informations utilisateur côté client
-      axios.get('http://localhost:4050/api/user', { withCredentials: true })
+      axios.get(ipAPI + '/api/user', { withCredentials: true })
       .then(response => {
         console.log('steam info', response.data);
         localStorage.setItem('steam_id', response.data.id)
@@ -75,7 +77,7 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
           const icone = document.createElement('i')
           const textSpan = document.createElement('span')
           buttonSteam.className = 'button-steam'
-          buttonSteam.href = 'http://localhost:4050/api/auth/steam'
+          buttonSteam.href = ipAPI + '/api/auth/steam'
           buttonSteam.style.marginTop = '20px'
           icone.className = 'fa-brands fa-steam text-2xl'
           textSpan.innerHTML = 'Login with Steam'
@@ -95,7 +97,7 @@ axios.get('http://localhost:4050/api/checkSession', { withCredentials: true })
 
 function logoutSteam(e) {
   e.preventDefault();
-  axios.get('http://localhost:4050/api/logout', { withCredentials: true })
+  axios.get(ipAPI + '/api/logout', { withCredentials: true })
     .then(response => {
       console.log(response);
       window.location.href = '/'

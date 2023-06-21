@@ -1,4 +1,18 @@
+// vérification connect
+axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
+  .then(response => {
+    if(response.data === 'connected') {
+
+    } else {
+      
+    }
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 // change stats
+const ipAPIstats = 'http://localhost:4050'
 
 const retakeButton = document.querySelector('.retake-button')
 const ffaButton = document.querySelector('.ffa-button')
@@ -39,7 +53,7 @@ console.log(retakeButton);
 
 // search stats to api servers
 
-axios.get('http://localhost:4050/api/statsFFA/Players')
+axios.get(ipAPIstats + '/api/statsFFA/Players')
   .then(players => {
     const steamID = localStorage.getItem('steam_id');
 
@@ -50,7 +64,7 @@ axios.get('http://localhost:4050/api/statsFFA/Players')
       console.log('account_id', player.account_id);
 
       // Effectuer des actions avec les statistiques du joueur
-      axios.get('http://localhost:4050/api/statsFFA/Players_stats')
+      axios.get(ipAPIstats + '/api/statsFFA/Players_stats')
         .then(stats => {
 
           const playerStats = stats.data.find((stats) => stats.account_id === player.account_id);
@@ -89,7 +103,7 @@ axios.get('http://localhost:4050/api/statsFFA/Players')
         });
 
       // Effectuer des actions avec les statistiques des armes du joueur
-      axios.get('http://localhost:4050/api/statsFFA/Weapons_player_stats')
+      axios.get(ipAPIstats + '/api/statsFFA/Weapons_player_stats')
         .then(stats => {
 
           const weaponStats = stats.data.find((stats) => stats.account_id === player.account_id);
