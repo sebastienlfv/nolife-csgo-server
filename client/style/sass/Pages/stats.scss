@@ -96,3 +96,25 @@
     display: none;
   }
 }
+
+.stats-connect {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  height: 500px;
+  margin-top: 80px;
+  border-radius: 10px;
+  display: flex;
+  font-family: 'Prompt';
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    background-color: red;
+    padding: 10px 40px;
+    border-radius: 5px;
+    display: flex; 
+    align-items: center; 
+    gap: 5px;
+  }
+}
