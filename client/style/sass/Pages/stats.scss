@@ -1,10 +1,10 @@
-.retake-button, .hsmod-button {
-  display: none !important;
-}
+// .retake-button, .hsmod-button {
+//   display: none !important;
+// }
 
-.retake-stats, .hsmod-stats {
-  display: none !important;
-}
+// .ffa-stats, .hsmod-stats {
+//   display: none !important;
+// }
 
 .stats-container {
   background-color: rgba(0,0,0,0.6);
@@ -92,7 +92,7 @@
 
   // modifier retake par FFA une fois toute les stats importer
 
-  .retake-stats, .hsmod-stats {
+  .ffa-stats, .hsmod-stats {
     display: none;
   }
 }

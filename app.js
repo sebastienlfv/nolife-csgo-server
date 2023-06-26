@@ -9,7 +9,7 @@ const SteamStrategy = passportSteam.Strategy;
 const port = 4050
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { Session, sequelizeSteam, sequelizeCsgoFfa } = require('./config/db');
+const { Session, sequelizeSteam } = require('./config/db');
 const { Op } = require('sequelize');
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer')
@@ -163,7 +163,9 @@ app.get('/api/logout', function(req, res){
 
 // import routes
 const serveurRoutes = require('./routes/serveur');
-const statsFfaRoutes = require('./routes/statsFFA')
+const statsFfaRoutes = require('./routes/statsFFA');
+const statsRetakeRoutes = require('./routes/statsRETAKE')
+const statsHsmodRoutes = require('./routes/statsHSMOD')
 
 // cors
 
@@ -187,6 +189,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // routes
 app.use('/api/serveur', serveurRoutes);
 app.use('/api/statsFFA', statsFfaRoutes)
+app.use('/api/statsRETAKE', statsRetakeRoutes)
+app.use('/api/statsHSMOD', statsHsmodRoutes)
 
 // static files
 app.use(express.static(__dirname + '/public'));
