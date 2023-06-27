@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const host = '149.202.87.104'
 
 // Base de données steam connect
 const sequelizeSteam = new Sequelize('session_nolifecsgo', 'root', 'root', {
-  host: '149.202.87.104',
+  host: host,
   dialect: 'mysql'
 });
 
@@ -31,7 +32,7 @@ const Session = sequelizeSteam.define('sessions', {
 
 // base de données csgo_ffa
 const sequelizeCsgoFfa = new Sequelize('csgo_stats_ffa', 'root', 'root', {
-  host: '149.202.87.104',
+  host: host,
   dialect: 'mysql'
 });
 
@@ -50,7 +51,7 @@ sequelizeCsgoFfa.sync().then(() => {
 
 // base de données csgo_retake
 const sequelizeCsgoRetake = new Sequelize('csgo_stats_retake', 'root', 'root', {
-  host: '149.202.87.104',
+  host: host,
   dialect: 'mysql'
 });
 
@@ -69,7 +70,7 @@ sequelizeCsgoFfa.sync().then(() => {
 
 // base de données csgo_hsmod
 const sequelizeCsgoHsmod = new Sequelize('csgo_stats_hsmod', 'root', 'root', {
-  host: '149.202.87.104',
+  host: host,
   dialect: 'mysql'
 });
 

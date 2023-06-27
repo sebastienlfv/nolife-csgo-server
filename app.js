@@ -6,7 +6,6 @@ const app = express()
 const passport = require('passport');
 const passportSteam = require('passport-steam');
 const SteamStrategy = passportSteam.Strategy;
-const port = 4050
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { Session, sequelizeSteam } = require('./config/db');
@@ -14,6 +13,9 @@ const { Op } = require('sequelize');
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer')
 dotenv.config()
+
+const ip = 'http://localhost:';
+const port = 4050;
 
 // STEAM
 
@@ -35,8 +37,8 @@ passport.deserializeUser((user, done) => {
 });
 // Initiate Strategy
 passport.use(new SteamStrategy({
-  returnURL: 'http://localhost:' + port + '/api/auth/steam/return',
-  realm: 'http://localhost:' + port + '/',
+  returnURL: ip + port + '/api/auth/steam/return',
+  realm: ip + port + '/',
   apiKey: '34C8F7FE766FED51D50376957154AFC2'
 }, function (identifier, profile, done) {
   process.nextTick(function () {
