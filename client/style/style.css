@@ -350,11 +350,42 @@ footer .footer-partner img:hover {
   justify-content: center;
 }
 
+.serveurs-container {
+  display: flex;
+  justify-content: space-between;
+}
+.serveurs-container .list-recent-players {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  width: 20%;
+  padding: 10px;
+}
+.serveurs-container .list-recent-players h1 {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+.serveurs-container .list-recent-players .separator-list {
+  background-color: red;
+  width: 95%;
+  height: 3px;
+  border-radius: 50px;
+  margin: auto;
+  margin-top: 10px;
+}
+.serveurs-container .list-recent-players .list-players {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
 .general-server {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(15px);
   height: 700px;
-  margin-top: 80px;
+  width: 75%;
   border-radius: 10px;
   display: flex;
   animation: loadhome 2s;

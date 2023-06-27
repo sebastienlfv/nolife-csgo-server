@@ -8,7 +8,7 @@ axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
       statsConnect.style.display = 'none'
 
 
-      // search stats to api servers
+      // search stats FFA to api servers
       axios.get(ipAPIstats + '/api/statsFFA/Players')
       .then(players => {
         const steamID = localStorage.getItem('steam_id');
@@ -84,14 +84,189 @@ axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
 
         } else {
           console.log('Le joueur correspondant au steamID n\'a pas été trouvé.');
+          const noStats = document.querySelector('.no-stats-ffa')
+          const containerStatsFfa = document.querySelector('.container-stats-ffa')
+          noStats.style.display = 'flex'
+          containerStatsFfa.style.display = 'none'
         }
       })
       .catch(error => {
         console.log(error);
-        statsContainer.style.display = 'none'
 
-        const noStats = document.querySelector('.no-stats')
-        noStats.style.display = 'flex'
+      });
+
+      // search stats RETAKE to api servers
+      axios.get(ipAPIstats + '/api/statsRETAKE/Players')
+      .then(players => {
+        const steamID = localStorage.getItem('steam_id');
+
+        const player = players.data.find((player) => player.steam_id === steamID);
+
+        if (player) {
+          console.log('Information du joueur :', player);
+          console.log('account_id', player.account_id);
+
+          // Effectuer des actions avec les statistiques du joueur
+          axios.get(ipAPIstats + '/api/statsRETAKE/Players_stats')
+            .then(stats => {
+
+              const playerStats = stats.data.find((stats) => stats.account_id === player.account_id);
+
+              if (playerStats) {
+                console.log('Statistiques du joueur :', playerStats);
+
+                console.log('Pseudo', player.nickname);
+                // importation stats ffa
+                document.querySelector('.pseudo-stats-retake').innerHTML = player.nickname
+                document.querySelector('.retake-ratio-stats').innerHTML = playerStats.kills / playerStats.deaths
+                if (isNaN(playerStats.kills / playerStats.deaths)) {
+                  document.querySelector('.retake-ratio-stats').innerHTML = '0.00';
+                }
+                document.querySelector('.retake-kill-stats').innerHTML = playerStats.kills
+                document.querySelector('.retake-round-loose-stats').innerHTML = playerStats.deaths
+                document.querySelector('.retake-round-win-stats').innerHTML = playerStats.points
+                
+                const playtimeSeconds = playerStats.playtime;
+                const hours = Math.floor(playtimeSeconds / 3600);
+                const minutes = Math.floor((playtimeSeconds % 3600) / 60);
+                const seconds = playtimeSeconds % 60;
+
+                const formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
+                document.querySelector('.ffa-times-stats').innerHTML = formattedTime;
+
+                console.log('kills',playerStats.kills / playerStats.deaths);
+                console.log('morts',playerStats.deaths);
+              } else {
+                console.log('Les statistiques du joueur n\'ont pas été trouvées.');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
+
+          // Effectuer des actions avec les statistiques des armes du joueur
+          // axios.get(ipAPIstats + '/api/statsFFA/Weapons_player_stats')
+          //   .then(stats => {
+
+          //     const weaponStats = stats.data.find((stats) => stats.account_id === player.account_id);
+
+          //     if (weaponStats) {
+          //       console.log('Statistiques du joueur arme :', weaponStats);
+
+          //       if (weaponStats.kills === 0) {
+          //         document.querySelector('.ffa-hsrate-stats').innerHTML = '0%';
+          //       } else {
+          //         const hsRate = (weaponStats.headshot / weaponStats.kills) * 100;
+          //         document.querySelector('.ffa-hsrate-stats').innerHTML = hsRate + '%';
+          //       }
+
+          //     } else {
+          //       console.log('Les statistiques du joueur n\'ont pas été trouvées.');
+          //     }
+          //   })
+          //   .catch(error => {
+          //     console.log(error);
+          //   });
+
+        } else {
+          console.log('Le joueur correspondant au steamID n\'a pas été trouvé.');
+
+          const noStats = document.querySelector('.no-stats-retake')
+          const containerStatsRetake = document.querySelector('.container-stats-retake')
+          noStats.style.display = 'flex'
+          containerStatsRetake.style.display = 'none'
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });      
+
+      // search stats HSMOD to api servers
+      axios.get(ipAPIstats + '/api/statsHSMOD/Players')
+      .then(players => {
+        const steamID = localStorage.getItem('steam_id');
+
+        const player = players.data.find((player) => player.steam_id === steamID);
+
+        if (player) {
+          console.log('Information du joueur :', player);
+          console.log('account_id', player.account_id);
+
+          // Effectuer des actions avec les statistiques du joueur
+          axios.get(ipAPIstats + '/api/statsHSMOD/Players_stats')
+            .then(stats => {
+
+              const playerStats = stats.data.find((stats) => stats.account_id === player.account_id);
+
+              if (playerStats) {
+                console.log('Statistiques du joueur :', playerStats);
+
+                console.log('Pseudo', player.nickname);
+                // importation stats ffa
+                document.querySelector('.pseudo-stats-hsmod').innerHTML = player.nickname
+                document.querySelector('.hsmod-ratio-stats').innerHTML = playerStats.kills / playerStats.deaths
+                if (isNaN(playerStats.kills / playerStats.deaths)) {
+                  document.querySelector('.hsmod-ratio-stats').innerHTML = '0.00';
+                }
+                document.querySelector('.hsmod-kill-stats').innerHTML = playerStats.kills
+                document.querySelector('.hsmod-death-stats').innerHTML = playerStats.deaths
+                document.querySelector('.hsmod-points-stats').innerHTML = playerStats.points
+                
+                const playtimeSeconds = playerStats.playtime;
+                const hours = Math.floor(playtimeSeconds / 3600);
+                const minutes = Math.floor((playtimeSeconds % 3600) / 60);
+                const seconds = playtimeSeconds % 60;
+
+                const formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
+                document.querySelector('.HSMOD-times-stats').innerHTML = formattedTime;
+
+                console.log('kills',playerStats.kills / playerStats.deaths);
+                console.log('morts',playerStats.deaths);
+              } else {
+                console.log('Les statistiques du joueur n\'ont pas été trouvées.');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
+
+          // Effectuer des actions avec les statistiques des armes du joueur
+          axios.get(ipAPIstats + '/api/statsFFA/Weapons_player_stats')
+            .then(stats => {
+
+              const weaponStats = stats.data.find((stats) => stats.account_id === player.account_id);
+
+              if (weaponStats) {
+                console.log('Statistiques du joueur arme :', weaponStats);
+
+                if (weaponStats.kills === 0) {
+                  document.querySelector('.ffa-hsrate-stats').innerHTML = '0%';
+                } else {
+                  const hsRate = (weaponStats.headshot / weaponStats.kills) * 100;
+                  document.querySelector('.ffa-hsrate-stats').innerHTML = hsRate + '%';
+                }
+
+              } else {
+                console.log('Les statistiques du joueur n\'ont pas été trouvées.');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
+
+        } else {
+          console.log('Le joueur correspondant au steamID n\'a pas été trouvé.');
+          const noStats = document.querySelector('.no-stats-hsmod')
+          const containerStatsHsmod = document.querySelector('.container-stats-hsmod')
+          noStats.style.display = 'flex'
+          containerStatsHsmod.style.display = 'none'
+        }
+      })
+      .catch(error => {
+        console.log(error);
+
       });
 
     } else {
