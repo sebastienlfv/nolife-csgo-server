@@ -168,6 +168,7 @@ const serveurRoutes = require('./routes/serveur');
 const statsFfaRoutes = require('./routes/statsFFA');
 const statsRetakeRoutes = require('./routes/statsRETAKE')
 const statsHsmodRoutes = require('./routes/statsHSMOD')
+const paymentRoutes = require('./routes/payment')
 
 // cors
 
@@ -193,6 +194,7 @@ app.use('/api/serveur', serveurRoutes);
 app.use('/api/statsFFA', statsFfaRoutes)
 app.use('/api/statsRETAKE', statsRetakeRoutes)
 app.use('/api/statsHSMOD', statsHsmodRoutes)
+app.use('/api/payment', paymentRoutes)
 
 // static files
 app.use(express.static(__dirname + '/public'));
