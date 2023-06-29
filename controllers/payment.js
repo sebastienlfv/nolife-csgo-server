@@ -38,25 +38,39 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
 }];
 
 exports.handleReturn = [isAuthenticated, async (req, res) => {
-    // Code pour gérer le retour de PayPal
+    const orderId = req.query.orderId;
+    const request = new paypal.orders.OrdersGetRequest(orderId);
+    const order = await paypalClient.execute(request);
 
-    res.json('handleReturn')
+    if (order.result.status === 'CREATED' || order.result.status === 'APPROVED') {
+        // Redirigez l'utilisateur vers la route confirmPayment
+        res.redirect(`/confirmPayment?orderId=${orderId}`);
+    } else {
+        // Redirigez l'utilisateur vers la route handleCancel
+        res.redirect('/handleCancel');
+    }
 }];
-
 exports.handleCancel = [isAuthenticated, async (req, res) => {
-    // Code pour gérer les annulations
-
-    res.json('handleCancel')
+    // Informez l'utilisateur que le paiement a été annulé
+    res.json({ message: 'Votre paiement a été annulé.' });
 }];
 
 exports.confirmPayment = [isAuthenticated, async (req, res) => {
-    const orderId = req.query.orderId;
+    // Vérifiez si orderId est défini
+    if (!req.query.orderId) {
+        return res.status(400).json({ message: 'orderId is required' });
+    }
 
-    // Vérifiez que la transaction a été payée
+    const orderId = req.query.orderId;
     const request = new paypal.orders.OrdersGetRequest(orderId);
     const order = await paypalClient.execute(request);
 
     if (order.result.status === 'COMPLETED') {
+        // Vérifiez si l'utilisateur est défini
+        if (!req.user || !req.user._json || !req.user._json.steamid) {
+            return res.status(400).json({ message: 'User information is required' });
+        }
+
         // Générez le code unique
         const uniqueCode = uuid.v4();
 
@@ -69,6 +83,7 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
 
         res.json({ message: 'Payment confirmed', code: uniqueCode });
     } else {
-        res.status(400).json({ message: 'Payment not confirmed' });
+        // Redirigez l'utilisateur vers la route handleCancel
+        res.redirect('/handleCancel');
     }
 }];
