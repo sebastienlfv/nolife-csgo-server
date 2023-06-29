@@ -74,17 +74,36 @@ const sequelizeCsgoHsmod = new Sequelize('csgo_stats_hsmod', 'root', 'root', {
   dialect: 'mysql'
 });
 
-sequelizeCsgoFfa.authenticate()
+sequelizeCsgoHsmod.authenticate()
   .then(() => {
     console.log("Connexion à la BDD HSMOD MySQL réussie");
   }).catch(() => {
   console.log("Connexion à la BDD HSMOD MySQL échouée");
 });
 
-sequelizeCsgoFfa.sync().then(() => {
+sequelizeCsgoHsmod.sync().then(() => {
   console.log('Les modèles ont été synchronisés avec la base de données serveurs HSMOD');
 }).catch((err) => {
   console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données serveurs HSMOD', err);
 });
 
-module.exports = { Session, sequelizeSteam, sequelizeCsgoFfa, sequelizeCsgoRetake, sequelizeCsgoHsmod };
+// base de données csgo_hsmod
+const sequelizeCsgoVip = new Sequelize('vip_csgo_nolife', 'root', 'root', {
+  host: host,
+  dialect: 'mysql'
+});
+
+sequelizeCsgoVip.authenticate()
+  .then(() => {
+    console.log("Connexion à la BDD VIP MySQL réussie");
+  }).catch(() => {
+  console.log("Connexion à la BDD VIP MySQL échouée");
+});
+
+sequelizeCsgoVip.sync().then(() => {
+  console.log('Les modèles ont été synchronisés avec la base de données VIP');
+}).catch((err) => {
+  console.log('Une erreur est survenue lors de la synchronisation des modèles avec la base de données VIP', err);
+});
+
+module.exports = { Session, sequelizeSteam, sequelizeCsgoFfa, sequelizeCsgoRetake, sequelizeCsgoHsmod, sequelizeCsgoVip };

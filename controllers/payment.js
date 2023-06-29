@@ -1,5 +1,6 @@
 const paypal = require('@paypal/checkout-server-sdk');
 const paypalClient = require('../config/paypalConfig');
+const { sequelizeCsgoVip } = require('../config/db')
 const uuid = require('uuid');
 
 const isAuthenticated = (req, res, next) => {
@@ -27,6 +28,7 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
     let order;
     try {
         order = await paypalClient.execute(request);
+        console.log('order', order);
     } catch (err) {
         // Handle any errors from the call
         console.error(err);
@@ -51,6 +53,10 @@ exports.handleReturn = [isAuthenticated, async (req, res) => {
     }
 }];
 exports.handleCancel = [isAuthenticated, async (req, res) => {
+    // Vérifiez si orderId est défini
+    if (!req.query.orderId) {
+        return res.status(400).json({ message: 'orderId is required' });
+    }
     // Informez l'utilisateur que le paiement a été annulé
     res.json({ message: 'Votre paiement a été annulé.' });
 }];
@@ -78,8 +84,15 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
         const steamID = req.user._json.steamid;
 
         // Enregistrez le steamID et le code unique
-        // Vous devrez remplacer cette partie par votre propre logique pour enregistrer le steamID et le code unique
-        // ...
+        try {
+            const result = await sequelizeCsgoVip.query(
+                'INSERT INTO VIPS (steamID, uniqueCode) VALUES (?, ?)',
+                { replacements: [steamID, uniqueCode] } 
+            )
+            console.log('SteamID and unique code saved in the database');
+        } catch (error) {
+            console.error('Error saving steamID and unique code in the database: ', error);
+        }
 
         res.json({ message: 'Payment confirmed', code: uniqueCode });
     } else {
