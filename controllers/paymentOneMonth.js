@@ -19,10 +19,14 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
         purchase_units: [{
             amount: {
                 currency_code: 'EUR',
-                value: '5.00'
+                value: '4.99'
             },
             description: 'VIP ORDER'
-        }]
+        }],
+        application_context: {
+            return_url: 'http://localhost:4050/api/paymentOneMonth/paypal-return',
+            cancel_url: 'http://localhost:4050/api/paymentOneMonth/paypal-cancel',
+        }
     });
 
     let order;
@@ -40,35 +44,49 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
 }];
 
 exports.handleReturn = [isAuthenticated, async (req, res) => {
-    const orderId = req.query.orderId;
-    const request = new paypal.orders.OrdersGetRequest(orderId);
+    const token = req.query.token;
+    const request = new paypal.orders.OrdersGetRequest(token);
     const order = await paypalClient.execute(request);
 
-    if (order.result.status === 'CREATED' || order.result.status === 'APPROVED') {
-        // Redirigez l'utilisateur vers la route confirmPayment
-        res.redirect(`/confirmPayment?orderId=${orderId}`);
+    if (order.result.status === 'APPROVED') {
+        // Create and execute capture request
+        const captureRequest = new paypal.orders.OrdersCaptureRequest(token);
+        const captureOrder = await paypalClient.execute(captureRequest);
+
+        if (captureOrder.result.status === 'COMPLETED') {
+            // Redirect to confirmation
+            res.redirect(`/api/paymentOneMonth/confirm-payment?token=${token}`);
+        } else {
+            console.log(`Order status is ${captureOrder.result.status}, redirecting to cancel`);
+            res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${token}`);
+        }
+    } else if (order.result.status === 'CREATED') {
+        // The payment has not been approved yet, redirect to confirmation
+        res.redirect(`/api/paymentOneMonth/confirm-payment?token=${token}`);
     } else {
-        // Redirigez l'utilisateur vers la route handleCancel
-        res.redirect('/handleCancel');
+        console.log(`Order status is ${order.result.status}, redirecting to cancel`);
+        res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${token}`);
     }
 }];
+
+
 exports.handleCancel = [isAuthenticated, async (req, res) => {
-    // Vérifiez si orderId est défini
-    if (!req.query.orderId) {
-        return res.status(400).json({ message: 'orderId is required' });
+    // Vérifiez si token est défini
+    if (!req.query.token) {
+        return res.status(400).json({ message: 'token is required' });
     }
     // Informez l'utilisateur que le paiement a été annulé
     res.json({ message: 'Votre paiement a été annulé.' });
 }];
 
 exports.confirmPayment = [isAuthenticated, async (req, res) => {
-    // Vérifiez si orderId est défini
-    if (!req.query.orderId) {
-        return res.status(400).json({ message: 'orderId is required' });
+    // Vérifiez si token est défini
+    if (!req.query.token) {
+        return res.status(400).json({ message: 'token is required' });
     }
 
-    const orderId = req.query.orderId;
-    const request = new paypal.orders.OrdersGetRequest(orderId);
+    const tokenId = req.query.token;
+    const request = new paypal.orders.OrdersGetRequest(tokenId);
     const order = await paypalClient.execute(request);
 
     if (order.result.status === 'COMPLETED') {
@@ -85,10 +103,12 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
 
         // Enregistrez le steamID et le code unique
         try {
+            const dateNow = new Date();
             const result = await sequelizeCsgoVip.query(
-                'INSERT INTO VIPS (steamID, uniqueCode) VALUES (?, ?)',
-                { replacements: [steamID, uniqueCode] } 
+                'INSERT INTO vips (steamID, uniqueCode, Formule, purchaseDate) VALUES (?, ?, ?, ?)',
+                { replacements: [steamID, uniqueCode, '1 month', dateNow] } 
             )
+
             console.log('SteamID and unique code saved in the database');
         } catch (error) {
             console.error('Error saving steamID and unique code in the database: ', error);
@@ -96,7 +116,7 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
 
         res.json({ message: 'Payment confirmed', code: uniqueCode });
     } else {
-        // Redirigez l'utilisateur vers la route handleCancel
-        res.redirect('/handleCancel');
+        console.log(`Order status is ${order.result.status}, redirecting to cancel`);
+        res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${tokenId}`);
     }
 }];
