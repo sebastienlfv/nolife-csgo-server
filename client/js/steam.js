@@ -41,6 +41,35 @@ axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
         steamAvatar.addEventListener('click', (event) => {
           openMenu.style.display = 'flex';
         });
+
+        // récupere les VIPS
+        axios.get(ipAPI + '/api/vips/getVips', { withCredentials: true })
+          .then(vips => {
+            console.log('list vips', vips);
+            const steamId = localStorage.getItem('steam_id');
+            const userVip = vips.data.find(vip => vip.steamID === steamId);
+            const vipStatus = document.querySelector('.vip-status')
+            const buyVip = document.querySelectorAll('.buy-vip')
+            console.log(buyVip);
+
+            if (userVip) {
+              vipStatus.innerHTML = 'Actif'
+              vipStatus.style.color = 'green'
+              buyVip.forEach(el => el.innerHTML = 'Déjà VIP') // Modify each element in the list
+              buyVip.forEach(link => {
+                link.addEventListener('click', (event) => {
+                  // Empêchez le lien de fonctionner
+                  event.preventDefault();
+                });
+              });
+          } else {
+              vipStatus.innerHTML = 'Inactif'
+              vipStatus.style.color = 'red'
+          }
+          })
+          .catch(error => {
+            console.log(error);
+          })
       })
       .catch(error => {
         console.error(error);
@@ -84,7 +113,6 @@ axios.get(ipAPI + '/api/checkSession', { withCredentials: true })
           popupDiv.appendChild(buttonSteam)
           buttonSteam.appendChild(icone)
           buttonSteam.appendChild(textSpan)
-  
         })
       })
     }
@@ -106,26 +134,3 @@ function logoutSteam(e) {
 
 document.querySelector('#steam-logout').addEventListener('click', logoutSteam);
 console.log(document.querySelector('#steam-logout'));
-
-
-// fetch('http://localhost:4050/api/user', {
-//   credentials: 'include' // Autoriser l'envoi de cookies
-// })
-// .then(response => {
-//   if (response.ok) {
-//     // L'utilisateur est connecté
-//     return response.json();
-//   } else {
-//     // L'utilisateur n'est pas connecté
-//     console.log(response);
-//     throw new Error('User not authenticated');
-//   }
-// })
-// .then(userInfo => {
-//   // Utiliser l'objet userInfo pour afficher les informations de l'utilisateur
-//   console.log(userInfo);
-// })
-// .catch(error => {
-//   // L'utilisateur n'est pas connecté, afficher un message d'erreur ou rediriger vers la page de connexion
-//   console.error(error);
-// });

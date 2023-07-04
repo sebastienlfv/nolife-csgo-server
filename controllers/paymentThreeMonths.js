@@ -36,13 +36,13 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
         purchase_units: [{
             amount: {
                 currency_code: 'EUR',
-                value: '4.99'
+                value: '14.99'
             },
-            description: 'VIP 1 MONTH ORDER'
+            description: 'VIP 3 MOUTHS ORDER'
         }],
         application_context: {
-            return_url: 'http://localhost:4050/api/paymentOneMonth/paypal-return',
-            cancel_url: 'http://localhost:4050/api/paymentOneMonth/paypal-cancel',
+            return_url: 'http://localhost:4050/api/paymentThreeMonths/paypal-return',
+            cancel_url: 'http://localhost:4050/api/paymentThreeMonths/paypal-cancel',
         }
     });
 
@@ -73,17 +73,17 @@ exports.handleReturn = [isAuthenticated, async (req, res) => {
 
         if (captureOrder.result.status === 'COMPLETED') {
             // Redirect to confirmation
-            res.redirect(`/api/paymentOneMonth/confirm-payment?token=${token}`);
+            res.redirect(`/api/paymentThreeMonths/confirm-payment?token=${token}`);
         } else {
             console.log(`Order status is ${captureOrder.result.status}, redirecting to cancel`);
-            res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${token}`);
+            res.redirect(`/api/paymentThreeMonths/paypal-cancel?token=${token}`);
         }
     } else if (order.result.status === 'CREATED') {
         // The payment has not been approved yet, redirect to confirmation
-        res.redirect(`/api/paymentOneMonth/confirm-payment?token=${token}`);
+        res.redirect(`/api/paymentThreeMonths/confirm-payment?token=${token}`);
     } else {
         console.log(`Order status is ${order.result.status}, redirecting to cancel`);
-        res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${token}`);
+        res.redirect(`/api/paymentThreeMonths/paypal-cancel?token=${token}`);
     }
 }];
 
@@ -125,7 +125,7 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
             const dateNow = new Date();
             const result = await sequelizeCsgoVip.query(
                 'INSERT INTO vips (steamID, uniqueCode, Formule, purchaseDate) VALUES (?, ?, ?, ?)',
-                { replacements: [steamID, uniqueCode, '1 month', dateNow] } 
+                { replacements: [steamID, uniqueCode, '3 months', dateNow] } 
             )
 
             console.log('SteamID and unique code saved in the database');
@@ -137,6 +137,6 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
         res.redirect('http://localhost:5500/client/confirmPayment.html');
     } else {
         console.log(`Order status is ${order.result.status}, redirecting to cancel`);
-        res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${tokenId}`);
+        res.redirect(`/api/paymentThreeMonths/paypal-cancel?token=${tokenId}`);
     }
 }];

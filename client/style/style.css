@@ -254,6 +254,14 @@ body {
 .container-website main .info-container .info-nolife img {
   width: 80px;
 }
+.container-website main .info-container .info-nolife a {
+  color: red;
+  font-weight: bold;
+}
+.container-website main .info-container .info-nolife span {
+  color: red;
+  font-weight: bold;
+}
 .container-website main .info-container .fa-solid.fa-users, .container-website main .info-container .title-reseau {
   font-size: 25px;
   margin-top: 20px;
@@ -703,6 +711,58 @@ footer .footer-partner img:hover {
   font-size: 16px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+.container-vip-detail {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  height: 500px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: loadhome 2s;
+  margin: auto;
+  margin-bottom: 150px !important;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+.container-vip-detail .detail {
+  display: flex;
+  width: 400px;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid red;
+  border-radius: 5px;
+  flex-direction: column;
+  padding: 20px;
+}
+.container-vip-detail .detail .list-avantage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 40px;
+  width: 100%;
+  gap: 10px;
+  font-size: 18px;
+}
+.container-vip-detail .detail a {
+  background-color: red;
+  font-size: 18px;
+  font-weight: bold;
+  width: 200px;
+  height: 40px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {

@@ -7,11 +7,12 @@
   <meta name="description" content="Nolife Clothing propose des serveurs CS:GO dotés de modes de jeu populaires tels que Retake, Deathmatch et HS DM.">
   <link rel="stylesheet" href="/client/style/style.css">
   <link rel="shortcut icon" href="/client/src/images/32x32.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://kit.fontawesome.com/a143a2c033.js" crossorigin="anonymous"></script>
+  <script src="/client/js/index.js" defer></script>
   <script src="/client/js/steam.js" defer></script>
-  <title>NOLIFE - ACCUEIL</title>
+  <title>VIP - NOLIFE</title>
 </head>
 <body>
   <div class="container-website">
@@ -21,7 +22,7 @@
           <a href="/"><img src="/client/src/images/logo-Nolife.webp" alt="nolife"></a>
           <a href="/">Accueil</a>
           <a href="/serveurs">Serveurs</a>
-          <a href="/classement" class="activ">Classement</a>
+          <a href="/classement">Classement</a>
           <a href="https://www.nolife-clothing.fr/" target="_blank">Boutique</a>
         </div>
         <div class="reseau-login">
@@ -57,18 +58,47 @@
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <p>Se déconnecter</p>  
               </div>
+              <a id="vip">
+                <i class="fa-solid fa-star"></i>
+                <p>VIP <span class="vip-status"></span></p>  
+              </a>
             </div>
-            <a id="vip">
-              <i class="fa-solid fa-star"></i>
-              <p>VIP <span class="vip-status"></span></p>  
-            </a>
           </div>
         </div>
       </nav>
     </header>
     <main>
-      <div style="height: 50vh">
-        <h1 style="color: #fff">Aucune données afficher actuellement</h1>
+      <div class="container-vip-detail">
+        <div class="detail">
+          <h1>1 MOIS</h1>
+          <div class="list-avantage">
+            <p>- Slots réserver sur tout les serveurs</p>
+            <p>- Accès aux serveurs BETA</p>
+            <p>- Tu reçois des lots Nolife Clothing si tu arrives dans le top 10 du classement
+              mensuels </p>
+          </div>
+          <a class="buy-vip" href="http://localhost:4050/api/paymentOneMonth/start-payment">4.99 €</a>
+        </div>
+        <div class="detail">
+          <h1>3 MOIS</h1>
+          <div class="list-avantage">
+            <p>- Slots réserver sur tout les serveurs</p>
+            <p>- Accès aux serveurs BETA</p>
+            <p>- Tu reçois des lots Nolife Clothing si tu arrives dans le top 10 du classement
+              mensuels </p>
+          </div>
+          <a class="buy-vip" href="http://localhost:4050/api/paymentThreeMonths/start-payment">14.99 €</a>
+        </div>
+        <div class="detail">
+          <h1>6 MOIS</h1>
+          <div class="list-avantage">
+            <p>- Slots réserver sur tout les serveurs</p>
+            <p>- Accès aux serveurs BETA</p>
+            <p>- Tu reçois des lots Nolife Clothing si tu arrives dans le top 10 du classement
+              mensuels </p>
+          </div>
+          <a class="buy-vip" href="http://localhost:4050/api/paymentSixMonths/start-payment">29.99 €</a>
+        </div>
       </div>
     </main>
   </div>

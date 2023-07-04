@@ -1,0 +1,54 @@
+.container-vip-detail {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  height: 500px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: loadhome 2s;
+  margin: auto;
+  margin-bottom: 150px !important;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+
+  .detail {
+    display: flex;
+    width: 400px;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    border-radius: 5px;
+    flex-direction: column;
+    padding: 20px;
+
+    .list-avantage {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 40px;
+      width: 100%;
+      gap: 10px;
+      font-size: 18px;
+    }
+
+    a {
+      background-color: red;
+      font-size: 18px;
+      font-weight: bold;
+      width: 200px;
+      height: 40px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      cursor: pointer;
+    }
+  }
+}

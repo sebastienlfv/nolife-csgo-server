@@ -168,7 +168,11 @@ const serveurRoutes = require('./routes/serveur');
 const statsFfaRoutes = require('./routes/statsFFA');
 const statsRetakeRoutes = require('./routes/statsRETAKE')
 const statsHsmodRoutes = require('./routes/statsHSMOD')
-const paymentOneMonthtrlRoutes = require('./routes/paymentOneMonth')
+const vipsRoutes = require('./routes/vips')
+const paymentOneMonthCtrlRoutes = require('./routes/paymentOneMonth')
+const paymentThreeMonthsCtrlRoutes = require('./routes/paymentThreeMonths')
+const paymentSixMonthsCtrlRoutes = require('./routes/paymentSixMonths')
+
 
 // cors
 
@@ -194,7 +198,10 @@ app.use('/api/serveur', serveurRoutes);
 app.use('/api/statsFFA', statsFfaRoutes)
 app.use('/api/statsRETAKE', statsRetakeRoutes)
 app.use('/api/statsHSMOD', statsHsmodRoutes)
-app.use('/api/paymentOneMonth', paymentOneMonthtrlRoutes)
+app.use('/api/vips', vipsRoutes)
+app.use('/api/paymentOneMonth', paymentOneMonthCtrlRoutes)
+app.use('/api/paymentThreeMonths', paymentThreeMonthsCtrlRoutes)
+app.use('/api/paymentSixMonths', paymentSixMonthsCtrlRoutes)
 
 // static files
 app.use(express.static(__dirname + '/public'));
