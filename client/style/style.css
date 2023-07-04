@@ -94,6 +94,19 @@ body {
   background-color: #330000;
   border-left: 2px solid red;
 }
+.steam .burger-steam #vip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  border-top-right-radius: 4px;
+  padding: 10px 15px;
+  border-left: 2px solid transparent;
+}
+.steam .burger-steam #vip span {
+  color: rgb(15, 165, 15);
+  margin-left: 5px;
+}
 .steam .burger-steam #support {
   display: flex;
   align-items: center;
@@ -658,6 +671,38 @@ footer .footer-partner img:hover {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.container-payment-detail {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  height: 250px;
+  width: 49%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: loadhome 2s;
+  margin: auto;
+  margin-bottom: 263px !important;
+}
+.container-payment-detail h1 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.container-payment-detail p {
+  font-size: 20px;
+}
+.container-payment-detail p span {
+  color: red;
+  font-weight: bold;
+}
+.container-payment-detail p:nth-child(3) {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 900px) {

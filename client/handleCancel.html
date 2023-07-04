@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nolife Clothing propose des serveurs CS:GO dotés de modes de jeu populaires tels que Retake, Deathmatch et HS DM.">
+  <link rel="stylesheet" href="/client/style/style.css">
+  <link rel="shortcut icon" href="/client/src/images/32x32.png" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://kit.fontawesome.com/a143a2c033.js" crossorigin="anonymous"></script>
+  <script src="/client/js/index.js" defer></script>
+  <script src="/client/js/steam.js" defer></script>
+  <script src="/client/js/showPlayers.js" defer></script>
+  <title>Paiment annulé - NOLIFE</title>
+  <script type="text/javascript">
+    setTimeout(function(){
+        window.location.href = '/'; // changez cela pour correspondre à votre URL de page d'accueil
+    }, 3000);
+  </script>
+</head>
+<body>
+  <div class="container-website">
+    <header>
+      <nav>
+        <div class="navigation">
+          <a href="/"><img src="/client/src/images/logo-Nolife.webp" alt="nolife"></a>
+          <a href="/">Accueil</a>
+          <a href="/serveurs" class="activ">Serveurs</a>
+          <a href="/classement">Classement</a>
+          <a href="https://www.nolife-clothing.fr/" target="_blank">Boutique</a>
+        </div>
+        <div class="reseau-login">
+          <a href="https://twitter.com/NolifeClothes" target="_blank">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://www.twitch.tv/nolife_clothing" target="_blank">
+            <i class="fa-brands fa-twitch"></i>
+          </a>
+          <a href="https://www.tiktok.com/@nolifeclothes" target="_blank">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com/nolifeclothes/" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="http://localhost:4050/api/auth/steam" class="button-steam" style="display: none;">
+            <i class="fa-brands fa-steam text-2xl"></i>
+            <span>Login with Steam</span>
+          </a>
+          <div class="steam">
+            <img src="" alt="steam-avatar" class="steam-avatar" style="display: none;">
+            <div class="burger-steam">
+              <i class="fa-solid fa-caret-up"></i>
+              <a href="/stats" id="stats">
+                <i class="fa-solid fa-signal"></i>
+                <p>Stats</p>  
+              </a>
+              <a href="/support" id="support">
+                <i class="fa-solid fa-headset"></i>
+                <p>Support</p>  
+              </a>
+              <div id="steam-logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <p>Se déconnecter</p>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container-payment-detail">
+        <h1>Votre paiement a été <span>annulé</span>.</h1>
+        <p><span>Réessaye</span> ou <span>envois</span> un message sur le discord !</p>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="footer-partner">
+      <img src="/client/src/images/partner/impact.png">
+      <img src="/client/src/images/partner/five.png">
+      <img src="/client/src/images/partner/cyberlab.png">
+      <img src="/client/src/images/partner/logo.png">
+      <img src="/client/src/images/partner/thugz.png">
+    </div>
+  </footer>
+</body>
+</html>

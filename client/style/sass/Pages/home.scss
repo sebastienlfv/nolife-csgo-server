@@ -105,6 +105,21 @@ body {
         border-left: 2px solid red;
       }
     }
+
+    #vip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      border-top-right-radius: 4px;
+      padding: 10px 15px;
+      border-left: 2px solid transparent;
+
+      span {
+        color: rgb(15, 165, 15);
+        margin-left: 5px;
+      }
+    }
     
     #support {
       display: flex;

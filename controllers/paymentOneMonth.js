@@ -12,6 +12,23 @@ const isAuthenticated = (req, res, next) => {
 };
 
 exports.startPayment = [isAuthenticated, async (req, res) => {
+    // Vérifiez si l'utilisateur est défini
+    if (!req.user || !req.user._json || !req.user._json.steamid) {
+        return res.status(400).json({ message: 'User information is required' });
+    }
+
+    const steamID = req.user._json.steamid;
+
+    // Vérifiez si le steamID existe déjà
+    const result = await sequelizeCsgoVip.query(
+        'SELECT * FROM  vips WHERE steamID = ?',
+        { replacements: [steamID], type: sequelizeCsgoVip.QueryTypes.SELECT }
+    );
+
+    if (result.length > 0) {
+        return res.status(400).json({ message: 'User already has a VIP status' });
+    }
+
     const request = new paypal.orders.OrdersCreateRequest();
     request.prefer("return=representation");
     request.requestBody({
@@ -42,6 +59,7 @@ exports.startPayment = [isAuthenticated, async (req, res) => {
     const approvalUrl = order.result.links.find(link => link.rel === 'approve').href;
     res.redirect(approvalUrl);
 }];
+
 
 exports.handleReturn = [isAuthenticated, async (req, res) => {
     const token = req.query.token;
@@ -76,7 +94,8 @@ exports.handleCancel = [isAuthenticated, async (req, res) => {
         return res.status(400).json({ message: 'token is required' });
     }
     // Informez l'utilisateur que le paiement a été annulé
-    res.json({ message: 'Votre paiement a été annulé.' });
+    res.redirect('http://localhost:5500/client/handleCancel.html');
+    console.log({ message: 'Votre paiement a été annulé.' });
 }];
 
 exports.confirmPayment = [isAuthenticated, async (req, res) => {
@@ -114,7 +133,8 @@ exports.confirmPayment = [isAuthenticated, async (req, res) => {
             console.error('Error saving steamID and unique code in the database: ', error);
         }
 
-        res.json({ message: 'Payment confirmed', code: uniqueCode });
+        // res.json({ message: 'Payment confirmed', code: uniqueCode })
+        res.redirect('http://localhost:5500/client/confirmPayment.html');
     } else {
         console.log(`Order status is ${order.result.status}, redirecting to cancel`);
         res.redirect(`/api/paymentOneMonth/paypal-cancel?token=${tokenId}`);

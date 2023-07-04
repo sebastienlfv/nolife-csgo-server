@@ -1,0 +1,35 @@
+.container-payment-detail {
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  height: 250px;
+  width: 49%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: loadhome 2s;
+  margin: auto;
+  margin-bottom: 263px !important;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 20px;
+
+    span {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  p:nth-child(3) {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+}
